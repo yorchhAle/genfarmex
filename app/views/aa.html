@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú con Submenú</title>
+    <style>
+        .submenu {
+            display: none; /* Oculta el submenú por defecto */
+            margin-left: 20px; /* Indentación para el submenú */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Menú Principal</h1>
+    
+    <div>
+        <button onclick="mostrarSubmenu('A')">Opción A</button>
+        <button onclick="mostrarSubmenu('B')">Opción B</button>
+        <button onclick="salir()">Salir</button>
+    </div>
+
+    <div id="submenuA" class="submenu">
+        <h2>Submenú de Opción A</h2>
+        <button onclick="accion('A1')">Subopción A1</button>
+        <button onclick="accion('A2')">Subopción A2</button>
+        <button onclick="ocultarSubmenu()">Volver al menú principal</button>
+    </div>
+
+    <div id="submenuB" class="submenu">
+        <h2>Submenú de Opción B</h2>
+        <button onclick="accion('B1')">Subopción B1</button>
+        <button onclick="accion('B2')">Subopción B2</button>
+        <button onclick="ocultarSubmenu()">Volver al menú principal</button>
+    </div>
+
+    <script>
+        function mostrarSubmenu(opcion) {
+            // Oculta ambos submenús
+            document.getElementById('submenuA').style.display = 'none';
+            document.getElementById('submenuB').style.display = 'none';
+            
+            // Muestra el submenú correspondiente
+            if (opcion === 'A') {
+                document.getElementById('submenuA').style.display = 'block';
+            } else if (opcion === 'B') {
+                document.getElementById('submenuB').style.display = 'block';
+            }
+        }
+
+        function ocultarSubmenu() {
+            // Oculta ambos submenús y regresa al menú principal
+            document.getElementById('submenuA').style.display = 'none';
+            document.getElementById('submenuB').style.display = 'none';
+        }
+
+        function accion(subopcion) {
+            alert("Has seleccionado " + subopcion);
+        }
+
+        function salir() {
+            alert("Saliendo del programa...");
+            // Aquí puedes agregar cualquier otra lógica para salir
+        }
+    </script>
+
+</body>
+</html>

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>alert('Por favor, llena ambos campos.'); window.location.href='inicioSesion.html';</script>";
     }
 } else {
-    header("Location: panel.html");
+    header("Location: panel.php");
     exit;
 }
 

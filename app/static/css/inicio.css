@@ -12,11 +12,12 @@
     align-items: center;
     background-color: #b0d4f1;
     padding: 10px 20px;
-  }
+}
 
 /* Contenedor principal con imagen de fondo */
 body {
-    background-image: url('../img/Eescritorio.png');  /* Ruta de la imagen de fondo */
+    background-image: url('../img/Eescritorio.png');
+    /* Ruta de la imagen de fondo */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -29,19 +30,20 @@ body {
     align-items: center;
     justify-content: center;
     height: 85vh;
-    background-color: rgba(0, 0, 0, 0.8); /* Oscurece ligeramente el fondo */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Oscurece ligeramente el fondo */
 }
 
 /* Logo */
 .logo {
     display: flex;
     align-items: center;
-  }
-  
-  .logo img {
+}
+
+.logo img {
     height: 100px;
     margin-right: 10px;
-  }
+}
 
 /* Caja de inicio de sesión */
 .login-box {
@@ -50,7 +52,7 @@ body {
     border-radius: 10px;
     text-align: center;
     width: 600px;
-    height:400px ;
+    height: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
 }
 
@@ -66,7 +68,7 @@ input {
     margin: 20px 0;
     border: none;
     border-radius: 5px;
-    margin-top:40px ;
+    margin-top: 40px;
 }
 
 /* Botones */

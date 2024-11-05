@@ -13,7 +13,7 @@ class AuthController {
                 session_start();
                 $_SESSION['usuario'] = $usuarioData['usuario'];
                 $_SESSION['tipoUsuario'] = $usuarioData['tipoUsuario'];
-                header("Location: panel.html");
+                header("Location: panel.php");
                 exit;
             } else {
                 // Contraseña incorrecta
