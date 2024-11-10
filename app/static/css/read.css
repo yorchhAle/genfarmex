@@ -1,50 +1,154 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Título */
 h1 {
     text-align: center;
-    color: #333;
+    color: #004085;
+    font-size: 2.4rem;
+    margin-bottom: 20px;
 }
 
-table {
+/* Tabla de descuentos */
+.tabla-descuentos {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-thead th {
-    background-color: #0096d6;
-    color: white;
-    padding: 10px;
+.tabla-descuentos th,
+.tabla-descuentos td {
+    padding: 12px;
     text-align: left;
+    font-size: 1.4rem;
+    border: 1px solid #e0e0e0;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+.tabla-descuentos th {
+    background-color: #004085;
+    color: #ffffff;
+    font-weight: bold;
 }
 
-tbody td {
-    padding: 10px;
-    border: 1px solid #ddd;
+.tabla-descuentos tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.actions a {
-    color: #0096d6;
+/* Enlaces de acción */
+.acciones .btn {
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    border-radius: 5px;
     text-decoration: none;
-    margin: 0 5px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+    color: white;
 }
 
-.actions a:hover {
-    text-decoration: underline;
+.acciones .actualizar {
+    background-color: #007bff;
+}
+
+.acciones .actualizar:hover {
+    background-color: #0056b3;
+}
+
+.acciones .eliminar {
+    background-color: #dc3545;
+}
+
+.acciones .eliminar:hover {
+    background-color: #c82333;
+}
+
+button.back-button {
+    background-color: #a9a9a9;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button.back-button:hover {
+    background-color: #8e8e8e;
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+    /* Ajustar el tamaño de los encabezados */
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Hacer que la tabla ocupe el 100% del ancho con padding reducido */
+    .tabla-descuentos th,
+    .tabla-descuentos td {
+        padding: 8px;
+        font-size: 1.2rem;
+    }
+
+    /* Adaptar botones de acción en la tabla */
+    .acciones .btn {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+
+    /* Ajustar la anchura de la tabla en pantallas pequeñas */
+    .tabla-descuentos {
+        font-size: 1.2rem;
+    }
+
+    /* Hacer que el botón de "volver" sea más pequeño */
+    button.back-button {
+        width: 100%;
+        padding: 12px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Ajuste de título para pantallas más pequeñas */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Ajustes de la tabla para pantallas móviles */
+    .tabla-descuentos th,
+    .tabla-descuentos td {
+        padding: 6px;
+        font-size: 1rem;
+    }
+
+    .acciones .btn {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    /* Ajuste de la tabla y el contenido */
+    .container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    /* Hacer que el botón de "volver" ocupe toda la pantalla */
+    button.back-button {
+        width: 100%;
+        padding: 10px 0;
+    }
 }

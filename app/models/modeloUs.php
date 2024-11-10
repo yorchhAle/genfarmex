@@ -11,13 +11,14 @@ class ModeloUs
     }
 
     // Crear un usuario
-    public function crearUs($nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario)
-    {
-        $sql = "INSERT INTO usuarios (nombre, apellido, usuario, pass, correo, telefono,direccion, tipoUsuario) VALUES (?,?,?,?,?,?,?,?)";
+    public function crearUs($nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario) {
+        $sql = "INSERT INTO usuarios (nombre, apellido, usuario, pass, correo, telefono, direccion, tipoUsuario) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ssssssss", $nombre, $apellido, $usuario,  $pass, $correo, $telefono, $direccion, $tipoUsuario);
-        return $stmt->execute();
-        return $stmt->insert_id;
+        $stmt->bind_param("ssssssss", $nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario);
+        if ($stmt->execute()) {
+            return $stmt->insert_id;
+        }
+        return false;
     }
 
     // Leer todos los usuario
@@ -86,9 +87,11 @@ class ModeloUs
     }
 
     // Método para admin
-    public function crearAdmin($usuarioId, $fechaContrato,$estatus, $observaciones) {
-        $stmt = $this->conn->prepare("INSERT INTO administradores (fechaAlta, estatus, observaciones,idusuario) VALUES (?, ?, ?,?)");
-        $stmt->bind_param("isss", $fechaContrato,$estatus, $observaciones, $usuarioId);
+    public function crearAdmin($usuarioId, $fechaContrato, $estatus, $observaciones) {
+        // Asegúrate de que la fecha esté en el formato correcto
+        $fechaContrato = date('Y-m-d', strtotime($fechaContrato));
+        $stmt = $this->conn->prepare("INSERT INTO administradores (fechaAlta, estatus, observaciones, idusuario) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("isss", $fechaContrato, $estatus, $observaciones, $usuarioId);
         return $stmt->execute();
     }
 

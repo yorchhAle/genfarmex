@@ -39,7 +39,7 @@ if ($usuarioExistente) {
     exit;
 }
     if ($usuario->crearUsuario($nombre, $apellido, $usuarioNombre, $contrasena, $email, $telefono, $direccion, $tipo,$datosAdicionales)) {
-        echo "<script>alert('Usuario creado exitosamente.'); window.location.href='listarusuarios.php';</script>";
+        echo "<script>alert('Usuario creado exitosamente.'); window.location.href='listarClientes.php';</script>";
     } else {
         echo "<script>alert('Error al crear el usuario.'); window.location.href='../views/cUsuarios.html';</script>";
     }

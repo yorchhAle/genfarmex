@@ -27,6 +27,8 @@ $descuentos = $descuentoController->obtenerDescuentos();
                         <th>Nombre</th>
                         <th>Porcentaje</th>
                         <th>Fecha de Creación</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +38,15 @@ $descuentos = $descuentoController->obtenerDescuentos();
                             <td><?php echo htmlspecialchars($descuento['nombre']); ?></td>
                             <td><?php echo htmlspecialchars($descuento['porcentaje']); ?>%</td>
                             <td><?php echo htmlspecialchars($descuento['FechaCreacion']); ?></td>
+                            <td class="acciones">
+                                <a href="actualizarDescuento.php?id=<?php echo $descuento['idDecuentos']; ?>" class="btn actualizar">Actualizar</a>
+                            </td>
+                            <td class="acciones">
+                                <a href="eliminarDescuento.php?id=<?php echo $descuento['idDecuentos']; ?>" class="btn eliminar">Eliminar</a>
+                            </td>
+                            
                         </tr>
+                        
                     <?php endforeach; ?>
                 </tbody>
             </table>

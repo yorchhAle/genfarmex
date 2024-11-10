@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo del botón para abrir el menú */
+.open-btn {
+    font-size: 30px;
+    background-color: #004085;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    z-index: 1001; /* Asegura que el botón esté por encima del menú */
+}
+
+.open-btn:hover {
+    background-color: #ff0000;
+}
+
+/* Estilo del menú lateral (sidebar) */
+.menuLateral {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #004085;
+    overflow-x: hidden;
+    transition: 0.5s; /* Animación para abrir y cerrar el menú */
+    padding-top: 60px;
+    color: white;
+    z-index: 1001; /* Alto valor para asegurar que esté por encima de otros elementos */
+}
+
+.menuLateral ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menuLateral ul li {
+    padding: 8px;
+    text-align: center;
+}
+
+.menuLateral ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+}
+
+.menuLateral ul li a:hover {
+    background-color: #ff0000;
+}
+
+/* Estilo del botón de cerrar */
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilo del contenido */
+.content {
+    padding: 20px;
+    margin-left: 20px;
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 250px; /* Ancho del menú lateral */
+    }
+
+    .open-btn {
+        left: 10px;
+        top: 10px;
+    }
+}

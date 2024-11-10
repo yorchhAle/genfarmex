@@ -37,10 +37,10 @@ $clientes = $proveedorController->obtenerUsuarioC();
         <table class="table-light">
             <thead>
                 <tr>
+                    <th scope="col">ID</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Usuario</th>
-                    <th>Email</th>
                     <th>Tipo</th>
                     <!-- Campos adicionales -->
                     <th>Credito</th>
@@ -54,6 +54,7 @@ $clientes = $proveedorController->obtenerUsuarioC();
                 $usuarios = (new UsController())->listarUsuarios();
                 foreach ($usuarios as $usuario) {
                     echo "<tr>";
+                    echo "<td>{$usuario['idusuario']}</td>";
                     echo "<td>{$usuario['nombre']}</td>";
                     echo "<td>{$usuario['apellido']}</td>";
                     echo "<td>{$usuario['usuario']}</td>";

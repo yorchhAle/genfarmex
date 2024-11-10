@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $descuentoController = new DescuentoController();
     if ($descuentoController->crearDescuento($nombre, $porcentaje, $fechaCreacion)) {
-        echo "<script>alert('Descuento creado exitosamente.'); window.location.href='listarDescuentos.php';</script>";
+        echo "<script>alert('Descuento creado exitosamente.'); window.location.href='CDescuentos.html';</script>";
     } else {
         echo "<script>alert('Error al crear el descuento.'); window.location.href='cDescuentos.html';</script>";
     }

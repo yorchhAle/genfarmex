@@ -1,0 +1,95 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 1.6rem;
+    background-color: #FFFAFA;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+/* Contenedor general */
+.contenedor {
+    max-width: 1500px;
+    padding: 4rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 2rem;
+}
+
+/* Estilos para las columnas */
+.entrada-blog {
+    background-color: #b0d4f1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background-color 2s ease, transform 0.3s ease; /* Añadido para transición suave */
+}
+
+/* Estilo para el enlace */
+.entrada-blog a {
+    color: #004085;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.entrada-blog:hover {
+    background-color: #004085; /* Color cuando pase el mouse */
+    transform: scale(1.05); /* Efecto de escala (opcional) */
+}
+
+.entrada-blog:hover a {
+    color: #ffffff; /* Cambia el color del enlace al pasar el mouse */
+}
+.entrada-blog:hover h1 {
+    color: #ff0000; /* Cambia el color del enlace al pasar el mouse */
+}
+
+.blog-contenido {
+    margin-bottom: 10px;
+}
+
+.entrada-blog img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .contenedor {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor {
+        grid-template-columns: 1fr; /* Una columna en pantallas móviles */
+    }
+}

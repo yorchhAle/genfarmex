@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es"> <!-- Cambié a español para mejorar la accesibilidad -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zssss</title>
+    <title>Document</title>
     <link rel="stylesheet" href="../static/css/header-footer.css">
-
 </head>
 
 <body>
+    <!-- Contenido de la página -->
     <header class="main-header">
-        <img src="../static/img/LogoPrincipal.png" alt="Logo Genfarmex" class="logo">
-        <input type="text" class="search-bar" placeholder="Buscar...">
-        <div class="buttons">
-            <button ><a href="../static/img/lupaBusqueda.png"></a></button>
-            <button class="back-btn">Regresar</button>
+        <div class="logo-container">
+            <img src="../static/img/LogoPrincipal.png" alt="Logo Genfarmex" class="logo">
+        </div>
+        <div class="botones">
             <button class="logout-btn">Cerrar sesión</button>
         </div>
     </header>

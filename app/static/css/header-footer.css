@@ -1,68 +1,96 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
+/* Configuración Global */
 body {
-    background-color: #f0f8ff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFAFA;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
 .main-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;  /* Centra todo el contenido del header */
     align-items: center;
-    background-color: #e3f2fd;
+    background-color: #b0d4f1;
     padding: 10px 20px;
+    flex-wrap: wrap;
 }
 
-.logo {
-    height: 10rem;
+.logo-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;  /* Permite que el logo ocupe el espacio disponible */
 }
 
-.search-bar {
-    width: 60%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.main-header .logo {
+    height: 100px; /* Ajusta el tamaño del logo */
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    width: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 20px;
 }
 
-.buttons {
+.botones {
     display: flex;
     gap: 10px;
 }
 
-.back-btn,
-.logout-btn {
-    background-color: #aaa;
+.botones button {
+    background-color: #004085;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 8px 10px;
     cursor: pointer;
-}
-
-.logout-btn {
-    background-color: #1e3a8a;
-}
-
-.logout-btn:hover {
-    background-color: #1a2e6b;
+    border-radius: 3rem;
 }
 
 /* Footer */
 .main-footer {
-    background-color: #e3f2fd;
+    background-color: #b0d4f1;
     text-align: center;
     padding: 10px;
-    margin-top: 20px;
-    color: #555;
+    margin-top: auto; /* Permite que el footer esté siempre al final */
 }
 
-.main-footer a {
-    color: #1e3a8a;
-    text-decoration: none;
+/* Media Queries para Responsividad */
+@media (max-width: 767px) {
+    /* Header Adaptable */
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-header .logo {
+        height: 30px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+    }
+
+    .botones {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .botones button {
+        width: 100%; /* Para botones en pantalla pequeña */
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Ajustes para pantallas medianas */
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-header .logo {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .botones {
+        gap: 15px;
+    }
 }

@@ -27,8 +27,15 @@ class ModeloDescuentos {
     public function actualizarDescuento($idDescuento, $nombre, $porcentaje, $fechaCreacion) {
         $sql = "UPDATE descuentos SET nombre = ?, porcentaje = ?, FechaCreacion = ? WHERE idDecuentos = ?";
         $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            die("Error en la preparación de la consulta: " . $this->conn->error);
+        }
         $stmt->bind_param("sdsi", $nombre, $porcentaje, $fechaCreacion, $idDescuento);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        if (!$result) {
+            die("Error al ejecutar la consulta: " . $stmt->error);
+        }
+        return $result;
     }
 
     // Eliminar un descuento
