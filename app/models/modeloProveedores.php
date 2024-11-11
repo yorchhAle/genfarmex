@@ -24,11 +24,10 @@ class ModeloProveedores {
     }
 
     // Actualizar un proveedores
-    public function actualizarProveedor($idProveedor, $nombre, $contacto,$telefono,$email,$direccion) {
-        $sql = "UPDATE proveedores SET nombreP = ?, contactoP = ?, telefonoP = ?, correoP =? , direccionP = ? WHERE idProveedor = ?";
+    public function actualizarProveedor($idProveedor, $nombre, $contacto, $telefono, $email, $direccion) {
+        $sql = "UPDATE proveedores SET nombreP = ?, contactoP = ?, telefonoP = ?, correoP = ?, direccionP = ? WHERE idProveedores = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("sssssi", $nombre, $contacto, $telefono, $email, $direccion);
-        $stmt->execute();
+        $stmt->bind_param("sssssi", $nombre, $contacto, $telefono, $email, $direccion, $idProveedor);
         return $stmt->execute();
     }
 

@@ -12,17 +12,6 @@ body {
 }
 
 /* Header */
-.header {
-    background-color: #99c3ff;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header .logo img {
-    height: 40px;
-}
 
 .navbar a {
     margin: 0 15px;
@@ -198,25 +187,6 @@ label {
     /* Suave transición de color de borde */
 }
 
-
-/* Footer */
-footer {
-    background-color: #99c3ff;
-    padding: 15px 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    margin-top: 50px;
-}
-
-footer a {
-    color: #333;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
 
 /* Estilos para el menú desplegable y el label */
 label {

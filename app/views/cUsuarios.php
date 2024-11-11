@@ -1,3 +1,12 @@
+<?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
+
+<?php 
+session_start();
+if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
+    header("Location: inicioSesion.html");
+    exit;
+}
+?> 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -36,16 +45,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
-        </div>
-        <nav class="navbar">
-            <a href="#">Información</a>
-            <a href="#">Ubicación</a>
-            <a href="#">Contactos</a>
-        </nav>
-    </header>
+<?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
 
     <div class="container">
         <div class="logo">
@@ -109,11 +109,8 @@
             </form>
         </div>
     </div>
-
-    <footer>
-        <p>Copyright © 2022 Genfarmex - Todos los derechos reservados.</p>
-        <a href="#">Aviso de Privacidad</a>
-    </footer>
 </body>
 
 </html>
+<?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->
+

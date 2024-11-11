@@ -38,6 +38,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     <th>Teléfono</th>
                     <th>Correo</th>
                     <th>Dirección</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +50,10 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                         <td><?php echo $proveedor['telefonoP']; ?></td>
                         <td><?php echo $proveedor['correoP']; ?></td>
                         <td><?php echo $proveedor['direccionP']; ?></td>
+                        <td class="acciones">
+                            <a href='eliminarProveedor.php?id=<?php echo $proveedor['idproveedores']; ?>' class="btn eliminar">Eliminar</a>
+                            <a href='actualizarProveedor.php?id=<?php echo $proveedor['idproveedores']; ?>' class="btn actualizar">Actualizar</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

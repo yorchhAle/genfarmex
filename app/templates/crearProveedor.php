@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $proveedor = new ProveedorController();
         if ($proveedor->crearProveedor($nombre, $conta, $telefono, $email, $direccion)) {
-            echo "<script>alert('Proveedor creado exitosamente.'); window.location.href='listarProveedores.php';</script>";
+            echo "<script>alert('Proveedor creado exitosamente.'); window.location.href='crearProveedor.php';</script>";
         } else {
-            echo "<script>alert('Error al crear el proveedor.'); window.location.href='cProveedor.html';</script>";
+            echo "<script>alert('Error al crear el proveedor.'); window.location.href='crearProveedor.php';</script>";
         }
     } else {
-        echo "<script>alert('Los datos introducidos son incorrectos.'); window.location.href='cProveedor.html';</script>";
+        echo "<script>alert('Los datos introducidos son incorrectos.'); window.location.href='crearProveedor.php';</script>";
     }
 ?>

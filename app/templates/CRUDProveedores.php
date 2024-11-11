@@ -1,11 +1,4 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
-<?php 
-session_start();
-if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
-    header("Location: inicioSesion.html");
-    exit;
-}
-?> 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +11,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-    <h1 align="center">CRUD Clientes</h1>
+    <h1 align="center">CRUD Provedores</h1>
 
     <div class="contenedor cuatro-columnas">
         <article class="entrada-blog">
@@ -26,7 +19,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <img src="../static/img/crear.png" alt="Imagen Admin">
                 <h1>Crear</h1>
             </div>
-            <a href="../views/cUsuarios.php">Empezar</a>
+            <a href="../views/cProveedores.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -34,7 +27,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <img src="../static/img/lectura.png" alt="Imagen Blog 2">
                 <h1>Lectura</h1>
             </div>
-            <a href="listarClientes.php">Empezar</a>
+            <a href="listarProveedores.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -42,7 +35,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <img src="../static/img/actualizar.png" alt="Imagen Admin">
                 <h1>Actualizar</h1>
             </div>
-            <a href="eliminarActCli.php">Empezar</a>
+            <a href="eliminarActProve.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -50,7 +43,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <img src="../static/img/eliminar.png" alt="Imagen Blog 4">
                 <h1>Eliminar</h1>
             </div>
-            <a href="eliminarActCli.php">Empezar</a>
+            <a href="eliminarActProve.php">Empezar</a>
         </article>
     </div>
 </body>

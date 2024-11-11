@@ -1,4 +1,5 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
+
 <?php
 require_once '../controllers/controladorDescuentos.php';
 
@@ -34,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </head>
         <body>
             <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-            
+            <h2>Actualizar Descuento</h2>
             <div class="form-container">
-                <h2>Actualizar Descuento</h2>
+                
                 <form action="actualizarDescuento.php" method="POST">
                 <input type="hidden" name="idDecuentos" value="<?php echo htmlspecialchars($descuentoActual['idDecuentos']); ?>">
                     <label for="nombre">Nombre del Descuento:</label>

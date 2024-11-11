@@ -1,12 +1,14 @@
-*,
-*::before,
-*::after {
+/* Restablecer estilos para todos los elementos dentro del formulario */
+.form-container *,
+.form-container *::before,
+.form-container *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html, body {
+/* Estilos generales de HTML y body, aplicados solo a .form-container */
+.form-container {
     height: 100%;
     width: 80%;
     font-family: Arial, sans-serif;
@@ -14,15 +16,11 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
+    margin: 0 auto;
     padding: 20px;
 }
 
-.form-container {
+.form-container .form-content {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
@@ -32,21 +30,24 @@ body {
     text-align: center;
 }
 
-h2 {
+/* Estilos de encabezado solo dentro de la sección del formulario */
+.form-container h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
-label {
+/* Estilos de etiqueta solo dentro del formulario */
+.form-container label {
     font-weight: bold;
     color: #333;
     display: block;
     margin-top: 15px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"] {
+/* Estilos de campos de entrada solo dentro del formulario */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="date"] {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -54,7 +55,8 @@ input[type="date"] {
     border-radius: 4px;
 }
 
-.btn-submit {
+/* Estilos del botón de envío solo dentro del formulario */
+.form-container .btn-submit {
     width: 100%;
     padding: 10px;
     background-color: #004085;
@@ -69,6 +71,6 @@ input[type="date"] {
     transition: background-color 0.3s;
 }
 
-.btn-submit:hover {
+.form-container .btn-submit:hover {
     background-color: #003366;
 }

@@ -1,4 +1,11 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
+<?php 
+session_start();
+if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
+    header("Location: inicioSesion.html");
+    exit;
+}
+?> 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,7 +33,7 @@
                 <img src="../static/img/admin.png" alt="Imagen Blog 2">
                 <h1>Gestión de administradores</h1>
             </div>
-            <a href="CRUDClientes.php">Empezar</a>
+            <a href="CRUDAdmin.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -58,7 +65,7 @@
                 <img src="../static/img/proveedor.png" alt="Imagen Blog 4">
                 <h1>Gestión de proveedores</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="CRUDProveedores.php">Empezar</a>
         </article>
     </div>
 

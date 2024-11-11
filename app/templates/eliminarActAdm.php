@@ -1,7 +1,7 @@
 <?php
 require_once '../controllers/controladorUs.php';
 $proveedorController = new UsController();
-$clientes = $proveedorController->obtenerUsuarioC();
+$clientes = $proveedorController->obtenerUsuariosA();
 ?>
 <?php 
 session_start();
@@ -18,7 +18,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Proveedores - Genfarmex</title>
+    <title>Lista de Admins - Genfarmex</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/read.css">
@@ -39,13 +39,17 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     <th>Usuario</th>
                     <th>Contraseña</th>
                     <th>Tipo</th>
-                    <th>Credito</th>
-                    <th>Actividad</th>
+                    <th>Fecha de alta</th>
+                    <th>Estatus</th>
+                    <th>Observaciones</th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $clientes = (new UsController())->listarClientes();
+                $clientes = (new UsController())->listarAdmins();
                 ?>
             <tbody>
                 <?php
@@ -57,8 +61,16 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     echo "<td>{$cliente['usuario']}</td>";
                     echo "<td>{$cliente['pass']}</td>";
                     echo "<td>{$cliente['tipoUsuario']}</td>";
-                    echo "<td>{$cliente['creditoC']}</td>";
-                    echo "<td>{$cliente['estatus_cliente']}</td>";
+                    echo "<td>{$cliente['fechaAlta']}</td>";
+                    echo "<td>{$cliente['estatus_admin']}</td>";
+                    echo "<td>{$cliente['observaciones']}</td>";
+                    echo "<td class='acciones'>";
+                    echo "<a href='actualizarClientes.php?id={$cliente['idusuario']}' class='btn actualizar'>Editar</a>";
+                    echo "</td>";
+                    echo "<td class='acciones'>";
+                    echo "<a href='eliminarUsuario.php?id={$cliente['idusuario']}' class='btn eliminar'>Eliminar</a>";
+                    echo "</td>";
+                    
                     echo "</tr>";
                 }
                 ?>

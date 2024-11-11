@@ -1,12 +1,11 @@
+<?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 <?php 
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
-include '../includes/header.php'; // Incluir el encabezado
 ?> 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,41 +18,41 @@ include '../includes/header.php'; // Incluir el encabezado
 
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
+    <h1 align="center">CRUD Administradores</h1>
 
     <div class="contenedor cuatro-columnas">
         <article class="entrada-blog">
             <div class="blog-contenido">
-                <img src="../static/img/admin.png" alt="Imagen Admin">
-                <h1>Gestiones</h1>
+                <img src="../static/img/crear.png" alt="Imagen Admin">
+                <h1>Crear</h1>
             </div>
-            <a href="gestionesPanel.php">Empezar</a>
+            <a href="../views/cUsuarios.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
             <div class="blog-contenido">
-                <img src="../static/img/cliente.png" alt="Imagen Blog 2">
-                <h1>Generar reportes</h1>
+                <img src="../static/img/lectura.png" alt="Imagen Blog 2">
+                <h1>Lectura</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="listarAdmins.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
             <div class="blog-contenido">
-                <img src="../static/img/descuentos.png" alt="Imagen Admin">
-                <h1>Generar consultas</h1>
+                <img src="../static/img/actualizar.png" alt="Imagen Admin">
+                <h1>Actualizar</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="eliminarActAdm.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
-    <div class="blog-contenido">
-        <img src="../static/img/producto.png" alt="Imagen Blog 4">
-        <h1>Generar respaldo</h1>
+            <div class="blog-contenido">
+                <img src="../static/img/eliminar.png" alt="Imagen Blog 4">
+                <h1>Eliminar</h1>
+            </div>
+            <a href="eliminarActAdm.php">Empezar</a>
+        </article>
     </div>
-    <a href="../../respaldos/generarRespaldo.php">Empezar</a>
-</article>
-    </div>
-
 </body>
 
 </html>

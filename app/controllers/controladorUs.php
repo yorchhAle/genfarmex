@@ -43,9 +43,18 @@ class UsController
         }
     }
 
-    public function listarUsuarios()
-    {
-        return $this->modeloUs->obtenerUsuariosConDatosAdicionales();
+    public function listarClientes() {
+        $usuarios = $this->modeloUs->obtenerUsuariosConDatosAdicionales();
+        return array_filter($usuarios, function($usuario) {
+            return strtolower($usuario['tipoUsuario']) === 'cliente';
+        });
+    }
+
+    public function listarAdmins() {
+        $usuarios = $this->modeloUs->obtenerUsuariosConDatosAdicionales();
+        return array_filter($usuarios, function($usuario) {
+            return strtolower($usuario['tipoUsuario']) == 'admin';
+        });
     }
 
     public function obtenerUsuarioPorNombre($usuario)
@@ -56,6 +65,11 @@ class UsController
     public function obtenerUsuarioC()
     {
         return $this->modeloUs->obtenerUsuariosC();
+    }
+
+    public function obtenerUsuariosA()
+    {
+        return $this->modeloUs->obtenerUsuariosA();
     }
 
     public function obtenerUsuarios($idUsuario)

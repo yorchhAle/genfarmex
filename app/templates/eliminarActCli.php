@@ -41,6 +41,8 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     <th>Tipo</th>
                     <th>Credito</th>
                     <th>Actividad</th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,6 +61,12 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     echo "<td>{$cliente['tipoUsuario']}</td>";
                     echo "<td>{$cliente['creditoC']}</td>";
                     echo "<td>{$cliente['estatus_cliente']}</td>";
+                    echo "<td class='acciones'>";
+                    echo "<a href='actualizarClientes.php?id={$cliente['idusuario']}' class='btn actualizar'>Editar</a>";
+                    echo "</td>";
+                    echo "<td class='acciones'>";
+                    echo "<a href='eliminarUsuario.php?id={$cliente['idusuario']}' class='btn eliminar'>Eliminar</a>";
+                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>

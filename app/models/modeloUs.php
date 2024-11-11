@@ -67,9 +67,16 @@ class ModeloUs
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function obtenerUsuariosA()
+    {
+        $sql = "SELECT * FROM administradores";
+        $result = $this->conn->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function obtenerUsuariosConDatosAdicionales() {
         $query = "
-            SELECT u.*, c.creditoC, c.estatusC AS estatus_cliente, e.rol, e.fechaContratacion, e.sueldo, a.estatus AS estatus_admin, a.observaciones
+            SELECT u.*, c.creditoC, c.estatusC AS estatus_cliente, e.rol, e.fechaContratacion, e.sueldo, a.estatus AS estatus_admin, a.fechaAlta AS fechaAlta, a.observaciones
             FROM usuarios u
             LEFT JOIN clientes c ON u.idusuario = c.idusuario
             LEFT JOIN empleados e ON u.idusuario = e.idusuario
@@ -103,38 +110,54 @@ class ModeloUs
     }
 
     public function actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario) {
-        $stmt = $this->conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, contrasena = ?, email = ?, telefono = ?, direccion = ?, tipoUsuario = ? WHERE idusuario = ?");
+        $stmt = $this->conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, pass = ?, correo = ?, telefono = ?, direccion = ?, tipoUsuario = ? WHERE idusuario = ?");
         $stmt->bind_param("ssssssssi", $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario, $idUsuario);
         $stmt->execute();
     }
     public function actualizarCliente($idUsuario, $credito, $estatus) {
-        $stmt = $this->conn->prepare("UPDATE clientes SET credito = ?, estatus = ? WHERE idusuario = ?");
+        $stmt = $this->conn->prepare("UPDATE clientes SET creditoC = ?, estatusC = ? WHERE idusuario = ?");
         $stmt->bind_param("dsi", $credito, $estatus, $idUsuario);
-        $stmt->execute();
+        return $stmt->execute();
     }
-    public function actualizarEmpleado($idUsuario, $puesto, $fechaContrato, $salario) {
-        $stmt = $this->conn->prepare("UPDATE empleados SET puesto = ?, fechaContrato = ?, salario = ? WHERE idusuario = ?");
-        $stmt->bind_param("ssdi", $puesto, $fechaContrato, $salario, $idUsuario);
-        $stmt->execute();
-    }
+    // Actualización para empleados y administradores
+public function actualizarEmpleado($idUsuario, $rol, $fechaContrato, $sueldo) {
+    $stmt = $this->conn->prepare("UPDATE empleados SET rol = ?, fechaContratacion = ?, sueldo = ? WHERE idusuario = ?");
+    $stmt->bind_param("ssdi", $rol, $fechaContrato, $sueldo, $idUsuario);
+    return $stmt->execute();
+}
 
-    public function actualizarAdmin($idUsuario, $estatus, $observaciones) {
-        $stmt = $this->conn->prepare("UPDATE administradores SET estatus = ?, observaciones = ? WHERE idusuario = ?");
-        $stmt->bind_param("ssi", $estatus, $observaciones, $idUsuario);
-        $stmt->execute();
-    }
+public function actualizarAdmin($idUsuario, $estatus, $observaciones) {
+    $stmt = $this->conn->prepare("UPDATE administradores SET estatus = ?, observaciones = ? WHERE idusuario = ?");
+    $stmt->bind_param("ssi", $estatus, $observaciones, $idUsuario);
+    return $stmt->execute();
+}
     
     
 
     public function eliminarUsuarioConDatos($idUsuario) {
-        // Eliminar datos en tablas adicionales y luego en usuarios
-        $this->conn->begin_transaction();
-        
-        $this->conn->query("DELETE FROM clientes WHERE idusuario = $idUsuario");
-        $this->conn->query("DELETE FROM empleados WHERE idusuario = $idUsuario");
-        $this->conn->query("DELETE FROM administradores WHERE idusuario = $idUsuario");
-        $this->conn->query("DELETE FROM usuarios WHERE idusuario = $idUsuario");
-        
-        $this->conn->commit();
+        try {
+            $this->conn->begin_transaction();
+    
+            // Use prepared statements to prevent SQL injection
+            $stmt1 = $this->conn->prepare("DELETE FROM clientes WHERE idusuario = ?");
+            $stmt2 = $this->conn->prepare("DELETE FROM empleados WHERE idusuario = ?");
+            $stmt3 = $this->conn->prepare("DELETE FROM administradores WHERE idusuario = ?");
+            $stmt4 = $this->conn->prepare("DELETE FROM usuarios WHERE idusuario = ?");
+    
+            // Bind and execute statements
+            foreach ([$stmt1, $stmt2, $stmt3, $stmt4] as $stmt) {
+                $stmt->bind_param("i", $idUsuario);
+                if (!$stmt->execute()) {
+                    throw new Exception("Error deleting user with ID $idUsuario in one of the tables.");
+                }
+            }
+            
+            $this->conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->conn->rollback();
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
 }

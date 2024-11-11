@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $UsuController = new UsController();
 
     if ($UsuController->eliminarUsuario($idusuarios)) {
-        echo "<script>alert('Usuario eliminado exitosamente.'); window.location.href='listarClientes.php';</script>";
+        echo "<script>alert('Eliminado exitosamente.'); window.location.href='gestionesPanel.php';</script>";
     } else {
-        echo "<script>alert('Error al eliminar el descuento.'); window.location.href='listarClientes.php';</script>";
+        echo "<script>alert('Error al eliminar el Cliente.'); window.location.href='listarClientes.php';</script>";
     }
 }
 ?>

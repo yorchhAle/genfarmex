@@ -35,13 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = new UsController();
     $usuarioExistente = $usuario->obtenerUsuarioPorNombre($usuarioNombre); // Suponiendo que tienes una función para obtener el usuario por nombre
 if ($usuarioExistente) {
-    echo "<script>alert('El usuario ya existe, elige otro nombre de usuario.'); window.location.href='../views/cUsuarios.html';</script>";
+    echo "<script>alert('El usuario ya existe, elige otro nombre de usuario.'); window.location.href='../views/cUsuarios.php';</script>";
     exit;
 }
     if ($usuario->crearUsuario($nombre, $apellido, $usuarioNombre, $contrasena, $email, $telefono, $direccion, $tipo,$datosAdicionales)) {
-        echo "<script>alert('Usuario creado exitosamente.'); window.location.href='listarClientes.php';</script>";
+        echo "<script>alert('Usuario creado exitosamente.'); window.location.href='../views/cUsuarios.php';</script>";
     } else {
-        echo "<script>alert('Error al crear el usuario.'); window.location.href='../views/cUsuarios.html';</script>";
+        echo "<script>alert('Error al crear el usuario.'); window.location.href='../views/cUsuarios.php';</script>";
     }
 }
 
