@@ -1,5 +1,5 @@
 <?php
-require_once '../../controllers/controladorProducto.php';
+require_once '../controllers/controladorProducto.php';
 
 $controller = new ProductoController();
 $filtro = isset($_GET['filtro']) ? $_GET['filtro'] : "";
@@ -17,29 +17,24 @@ $totalPaginas = ceil($totalProductos / 40);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/inicio2.css">
+    <link rel="stylesheet" href="../static/css/inicio2.css">
+    
     <title>Catalogo</title>
 </head>
-<header class="header">
-        <div class="logo">
-          <img src="../../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
-        </div>
-        <nav class="navbar">
-          <a href="#">Información</a>
-          <a href="#">Ubicación</a>
-          <a href="#">Contactos</a>
-        </nav> 
+<header> 
+    <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 </header>
 <body>
+<?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
     <hr>    
     <div class="barra-busq">
     <h1>Buscar Productos</h1>
     <form method="get" action="">
-        <input type="text" name="filtro" placeholder="Buscar...">
+        <input class="filtro" type="text" name="filtro" placeholder="Buscar..."><br>
         <button type="submit">Buscar</button>
     </form>
     <form method="get" action="">
-        <button type="submit">Mostrar todos</button>
+        <button type="submit">Mostrar todos</button><br><br>
     </form>
     </div>
 
@@ -48,10 +43,10 @@ $totalPaginas = ceil($totalProductos / 40);
         foreach ($productos as $producto) {
     ?>
         <div class="card">
-            <p>Clave: <?php echo htmlspecialchars($producto['clave']); ?></p>
-            <p>Descripción: <?php echo htmlspecialchars($producto['descripcion']); ?></p>
-            <p>Existencias: <?php echo htmlspecialchars($producto['existencias']); ?></p>
-            <p>Precio: <?php echo htmlspecialchars(number_format($producto['precioUnitario'], 2)); ?></p>
+            <p><bold>Clave:</bold> <?php echo htmlspecialchars($producto['clave']); ?></p>
+            <p><bold>Descripción:</bold> <?php echo htmlspecialchars($producto['descripcion']); ?></p>
+            <p><bold>Existencias:</bold> <?php echo htmlspecialchars($producto['existencias']); ?></p>
+            <p><bold>Precio:</bold> <?php echo htmlspecialchars(number_format($producto['precioUnitario'], 2)); ?></p>
             <a href="actualizarProducto.php?id=<?php echo $producto['id']; ?>">Actualizar</a>
             <a href="eliminarProducto.php?id=<?php echo $producto['id']; ?>">Eliminar</a>
         </div>

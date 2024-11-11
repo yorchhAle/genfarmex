@@ -1,5 +1,5 @@
 <?php
-require_once '../../controllers/controladorProducto.php';
+require_once '../controllers/controladorProducto.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clave = $_POST['clave'];
     $desc = $_POST['desc'];
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($productoController->crearProducto($clave, $desc, $exis, $pre)) {
         echo "<script>alert('Producto creado exitosamente.'); window.location.href='listarProducto.php';</script>";
     } else {
-        echo "<script>alert('Error: La clave ya existe.'); window.location.href='cProducto.html';</script>";
+        echo "<script>alert('Error: La clave ya existe.'); window.location.href='../views/cProducto.html';</script>";
     }
 }
 ?>

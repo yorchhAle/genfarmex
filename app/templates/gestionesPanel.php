@@ -57,7 +57,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <img src="../static/img/producto.png" alt="Imagen Blog 4">
                 <h1>Gestión de productos</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="CRUDProducto.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">

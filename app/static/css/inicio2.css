@@ -16,11 +16,13 @@
 
 /* Contenedor principal con imagen de fondo */
 body {
-    background-image: url('../img/Eescritorio.png');  /* Ruta de la imagen de fondo */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
+
 
 /* Contenedor */
 .container {
@@ -30,6 +32,10 @@ body {
     justify-content: center;
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.8); /* Oscurece ligeramente el fondo */
+}
+
+.filtro{
+    width: 40%;
 }
 
 /* Logo */
@@ -136,6 +142,10 @@ footer a {
     margin-bottom: .5rem;
 }
 
+.card bold{
+    font-weight: 6000;
+}
+
 .card strong{
     color: #00008b;
 }
@@ -146,5 +156,24 @@ footer a {
 
 .paginacion{
     text-align: center;
-    background-color: beige;
+}
+
+.card a{
+    background-color: #00008b;
+    text-decoration: none;
+    color: white;
+    width: 100px;
+    height: 1.5rem;
+    border-radius: 1rem;
+    font-weight: 300;
+}
+
+form button{
+    width: 10%; 
+    height: 1.9rem;
+    background-color: #00008b;
+    border-radius: 1rem;
+    color: white;
+    margin-bottom: .3rem;
+    font-weight: 300;
 }
