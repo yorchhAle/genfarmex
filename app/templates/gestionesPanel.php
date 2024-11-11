@@ -50,7 +50,7 @@
                 <img src="../static/img/producto.png" alt="Imagen Blog 4">
                 <h1>Gestión de productos</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="CRUDProducto.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -58,7 +58,7 @@
                 <img src="../static/img/proveedor.png" alt="Imagen Blog 4">
                 <h1>Gestión de proveedores</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="CRUDProveedores.php">Empezar</a>
         </article>
     </div>
 

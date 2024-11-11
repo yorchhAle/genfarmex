@@ -11,7 +11,7 @@
 
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-    <h1 align="center">CRUD Clientes</h1>
+    <h1 align="center">CRUD Proveedores</h1>
 
     <div class="contenedor cuatro-columnas">
         <article class="entrada-blog">
@@ -19,7 +19,7 @@
                 <img src="../static/img/crear.png" alt="Imagen Admin">
                 <h1>Crear</h1>
             </div>
-            <a href="../views/cUsuarios.html">Empezar</a>
+            <a href="../views/cProveedores.html">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -27,7 +27,7 @@
                 <img src="../static/img/lectura.png" alt="Imagen Blog 2">
                 <h1>Lectura</h1>
             </div>
-            <a href="listarClientes.php">Empezar</a>
+            <a href="listarProveedores.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -35,7 +35,7 @@
                 <img src="../static/img/actualizar.png" alt="Imagen Admin">
                 <h1>Actualizar</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="eliminarActDes.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
@@ -43,7 +43,7 @@
                 <img src="../static/img/eliminar.png" alt="Imagen Blog 4">
                 <h1>Eliminar</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="eliminarProveedor.php">Empezar</a>
         </article>
     </div>
 </body>
