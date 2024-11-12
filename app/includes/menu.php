@@ -18,7 +18,7 @@
             <li><a href="../templates/gestionesPanel.php">Gestiones</a></li>
             <li><a href="#">Generar reportes</a></li>
             <li><a href="#">Generar consultas</a></li>
-            <li><a href="#">Generar respaldo de BD</a></li>
+            <li><a href="../respaldos/index.php">Generar respaldo de BD</a></li>
         </ul>
     </div>
 </body>

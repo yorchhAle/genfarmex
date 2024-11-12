@@ -9,8 +9,9 @@ CREATE TABLE `administradores` (
   PRIMARY KEY (`idadmin`),
   KEY `idusuario` (`idusuario`),
   CONSTRAINT `administradores_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `administradores` VALUES ('2', '0000-00-00', 'activo', 'nada', '1');
 
 
 CREATE TABLE `clientes` (
@@ -32,10 +33,8 @@ CREATE TABLE `descuentos` (
   `porcentaje` float NOT NULL,
   `FechaCreacion` date NOT NULL,
   PRIMARY KEY (`idDecuentos`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `descuentos` VALUES ('1', 'jesusatf1', '0.15', '2024-11-10');
-INSERT INTO `descuentos` VALUES ('2', 'jesusatf', '0.2', '2024-11-26');
 
 
 CREATE TABLE `detallepedido` (
@@ -62,9 +61,8 @@ CREATE TABLE `empleados` (
   PRIMARY KEY (`idempleado`),
   KEY `idusuario` (`idusuario`),
   CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `empleados` VALUES ('1', '0', '2024-11-10', '9', '2');
 
 
 CREATE TABLE `facturacion` (
@@ -123,11 +121,9 @@ CREATE TABLE `producto` (
   `existencias` int(11) NOT NULL,
   `precioUnitario` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `producto` VALUES ('2', '123456', 'jarabe', '100', '120');
-INSERT INTO `producto` VALUES ('3', '1234566', 'prueba2', '80', '10');
-INSERT INTO `producto` VALUES ('5', '12347', 'prueba3', '100', '15');
+INSERT INTO `producto` VALUES ('1', '1243', 'pruebaaa', '10', '10');
 
 
 CREATE TABLE `proveedores` (
@@ -154,7 +150,6 @@ CREATE TABLE `usuarios` (
   `tipoUsuario` varchar(45) NOT NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `usuarios` VALUES ('1', 'jokrge', 'Alejandro', 'ola', '123', 'dasdsad', '333333', 'sdfgh', 'admin');
-INSERT INTO `usuarios` VALUES ('2', 'Jesus', 'Torres', 'jesustorres', '12345678', 'jesusantoniotorflor@gmail.com', '7771414733', 'piru y roble', 'empleado');
+INSERT INTO `usuarios` VALUES ('1', 'Jesus', 'Torres Flores', 'jesusatf', '1234', 'jesusantoniotorflor@gmail.com', '7771414733', 'PIRU Y ROBLE', 'admin');

@@ -1,17 +1,19 @@
 <?php
-<<<<<<< HEAD
-=======
-
->>>>>>> dc7ad8d82ec09c8baee958ceda9dc6090e54d6b7
 // Datos de conexión
 $db_host = 'localhost';
 $db_name = 'genfarmexbd';
 $db_user = 'root';
 $db_pass = '';
 
-// Nombre del archivo de respaldo
+// Nombre del archivo de respaldo y ruta de la carpeta de respaldo
 $fecha = date("Ymd-His");
-$salida_sql = $db_name . '_' . $fecha . '.sql';
+$carpeta_backup = 'backup';
+$salida_sql = $carpeta_backup . '/' . $db_name . '_' . $fecha . '.sql';
+
+// Crear la carpeta si no existe
+if (!file_exists($carpeta_backup)) {
+    mkdir($carpeta_backup, 0777, true);
+}
 
 // Conectar a la base de datos
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -23,10 +25,7 @@ if ($conn->connect_error) {
 
 // Abrir archivo para escritura
 $file = fopen($salida_sql, 'w');
-<<<<<<< HEAD
-=======
 
->>>>>>> dc7ad8d82ec09c8baee958ceda9dc6090e54d6b7
 if ($file === false) {
     die("No se pudo crear el archivo de respaldo.");
 }
@@ -54,4 +53,5 @@ fclose($file);
 $conn->close();
 
 echo "Respaldo creado: $salida_sql";
+echo "<script>alert('Respaldo creado. $salida_sql'); window.location.href='index.php';</script>";
 ?>

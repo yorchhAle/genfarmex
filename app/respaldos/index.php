@@ -1,18 +1,21 @@
+<title>Restauración y respaldo BD - Genfarmex</title>	
+<?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Script php backup and restore Mysqli</title>
+	<link rel="stylesheet" href="../static/css/backup.css">
 </head>
 <body>
-	<a href="generarRespaldo.php">Realizar copia de seguridad</a>
-	<form action="Restaurar.php" method="POST">
+	<?php include '../includes/menu.php'; ?>
+	<a class="boton" href="generarRespaldo.php">Realizar copia de seguridad</a>
+	<form class="formulario" action="Restaurar.php" method="POST">
 		<label>Selecciona un punto de restauración</label><br>
 		<select name="restorePoint">
 			<option value="" disabled="" selected="">Selecciona un punto de restauración</option>
 			<?php
-				include_once '../config/db.php';
+				require_once __DIR__ . '../../../config/db.php';
 				$ruta=BACKUP_PATH;
 				if(is_dir($ruta)){
 				    if($aux=opendir($ruta)){
@@ -20,7 +23,7 @@
 				            if($archivo!="."&&$archivo!=".."){
 				                $nombrearchivo=str_replace(".sql", "", $archivo);
 				                $nombrearchivo=str_replace("-", ":", $nombrearchivo);
-				                $ruta_completa=$archivo;
+				                $ruta_completa=$ruta."/".$archivo;
 				                if(is_dir($ruta_completa)){
 				                }else{
 				                    echo '<option value="'.$ruta_completa.'">'.$nombrearchivo.'</option>';

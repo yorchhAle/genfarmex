@@ -6,7 +6,8 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
-?> 
+?>
+ 
 <!DOCTYPE html>
 <html lang="es">
 

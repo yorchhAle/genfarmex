@@ -18,7 +18,7 @@ const USER = "root";
 const SERVER = "localhost";
 const BD = "genfarmexBD";
 const PASS = "";
-const BACKUP_PATH = "../respaldos";
+const BACKUP_PATH = "../respaldos/backup";
 
 date_default_timezone_set('America/Mexico_City');
 
