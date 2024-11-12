@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc7ad8d82ec09c8baee958ceda9dc6090e54d6b7
 // Datos de conexión
 $db_host = 'localhost';
 $db_name = 'genfarmexbd';
@@ -19,6 +23,10 @@ if ($conn->connect_error) {
 
 // Abrir archivo para escritura
 $file = fopen($salida_sql, 'w');
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc7ad8d82ec09c8baee958ceda9dc6090e54d6b7
 if ($file === false) {
     die("No se pudo crear el archivo de respaldo.");
 }

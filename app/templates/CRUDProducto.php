@@ -19,7 +19,11 @@
                 <img src="../static/img/crear.png" alt="Imagen Admin">
                 <h1>Crear</h1>
             </div>
+<<<<<<< HEAD
             <a href="../views/CProducto.php">Empezar</a>
+=======
+            <a href="../views/CProducto.html">Empezar</a>
+>>>>>>> dc7ad8d82ec09c8baee958ceda9dc6090e54d6b7
         </article>
 
         <article class="entrada-blog">

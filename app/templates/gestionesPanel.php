@@ -2,7 +2,11 @@
 <?php 
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
+<<<<<<< HEAD
     header("Location: ../views/inicioSesion.html");
+=======
+    header("Location: inicioSesion.html");
+>>>>>>> dc7ad8d82ec09c8baee958ceda9dc6090e54d6b7
     exit;
 }
 ?> 
