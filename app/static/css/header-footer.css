@@ -1,0 +1,96 @@
+/* Configuración Global */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFAFA;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: center;  /* Centra todo el contenido del header */
+    align-items: center;
+    background-color: #b0d4f1;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;  /* Permite que el logo ocupe el espacio disponible */
+}
+
+.main-header .logo {
+    height: 100px; /* Ajusta el tamaño del logo */
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    width: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 20px;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+.botones button {
+    background-color: #004085;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 3rem;
+}
+
+/* Footer */
+.main-footer {
+    background-color: #b0d4f1;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto; /* Permite que el footer esté siempre al final */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 767px) {
+    /* Header Adaptable */
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-header .logo {
+        height: 30px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+    }
+
+    .botones {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .botones button {
+        width: 100%; /* Para botones en pantalla pequeña */
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Ajustes para pantallas medianas */
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-header .logo {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .botones {
+        gap: 15px;
+    }
+}

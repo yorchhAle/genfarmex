@@ -8,10 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $auth = new AuthController();
         $auth->login($usuario, $contrasena);
     } else {
-        echo "<script>alert('Por favor, llena ambos campos.'); window.location.href='inicioSesion.html';</script>";
+        echo "<script>alert('Por favor, llena ambos campos.'); window.location.href='../views/inicioSesion.html';</script>";
     }
 } else {
-    header("Location: panel.html");
+    header("Location: panel.php");
     exit;
 }
 

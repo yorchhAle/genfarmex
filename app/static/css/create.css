@@ -1,0 +1,280 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #eaeff7;
+    color: #333;
+}
+
+/* Header */
+
+.navbar a {
+    margin: 0 15px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* Logo */
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 400px;
+}
+
+/* Login Box */
+.login-box {
+    background-color: #f9f9f9;
+    padding: 30px;
+    width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-box h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="tel"],
+.login-box input[type="email"],
+.login-box input[type="number"],
+.login-box input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-box button[type="submit"] {
+    background-color: #1e3b8e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-box button[type="submit"]:hover {
+    background-color: #162b6d;
+}
+
+button.back-button {
+    background-color: #a9a9a9;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button.back-button:hover {
+    background-color: #8e8e8e;
+}
+
+/* Estilos para los formularios adicionales */
+.additional-form {
+    background-color: #f1f1f1;
+    /* Fondo claro para distinguir los formularios */
+    padding: 20px;
+    /* Espaciado interno */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    margin-top: 15px;
+    /* Espacio entre los formularios */
+}
+
+/* Encabezados de los formularios adicionales */
+.additional-form h3 {
+    color: #1e3b8e;
+    /* Color de texto para los encabezados */
+    margin-bottom: 10px;
+    /* Espacio inferior */
+}
+
+/* Inputs específicos para los formularios adicionales */
+.additional-form input[type="text"],
+.additional-form input[type="tel"],
+.additional-form input[type="email"],
+.additional-form input[type="number"],
+.additional-form input[type="date"] {
+    border: 1px solid #007bff;
+    /* Color de borde diferente */
+}
+
+.additional-form input[type="text"]:focus,
+.additional-form input[type="number"]:focus,
+.additional-form input[type="date"]:focus {
+    border-color: #0056b3;
+    /* Cambio de color al enfocar */
+    outline: none;
+    /* Quitar el contorno por defecto */
+}
+/* Ajuste de margen para los labels */
+label {
+    display: block; /* Hace que el label ocupe toda la línea */
+    margin-top: 15px; /* Espacio superior para separarlo de los elementos anteriores */
+    margin-bottom: 8px; /* Espacio inferior para separar el label del input/select */
+    color: #333; /* Color del texto */
+    font-weight: bold; /* Negrita para mayor énfasis */
+}
+
+/* Espaciado adicional para los selects y otros elementos del formulario */
+.additional-form select {
+    margin-bottom: 15px; /* Espacio inferior para separar el select del siguiente elemento */
+}
+
+/* Espaciado adicional para inputs y selects generales */
+.login-box input[type="text"],
+.login-box input[type="tel"],
+.login-box input[type="email"],
+.login-box input[type="number"],
+.login-box input[type="date"],
+.login-box select {
+    margin-bottom: 15px; /* Espacio entre los inputs/selects y el siguiente elemento */
+}
+
+
+/* Estilo para el select dentro de los formularios adicionales */
+.additional-form select {
+    border: 1px solid #007bff;
+    /* Color de borde para los selects */
+}
+
+.additional-form select:focus {
+    border-color: #0056b3;
+    /* Cambio de color al enfocar el select */
+}
+
+/* Opciones del menú desplegable en los formularios adicionales */
+.additional-form option {
+    padding: 10px;
+    /* Espaciado interno para las opciones */
+    background-color: #fff;
+    /* Color de fondo de las opciones */
+}
+
+/* Añadir transiciones para inputs y selects */
+.additional-form input,
+.additional-form select {
+    transition: border-color 0.3s ease;
+    /* Suave transición de color de borde */
+}
+
+
+/* Estilos para el menú desplegable y el label */
+label {
+    display: block;
+    /* Hace que el label ocupe toda la línea */
+    margin-top: 15px;
+    /* Espacio superior para separarlo de los elementos anteriores */
+    color: #333;
+    /* Color del texto */
+    font-weight: bold;
+    /* Negrita para mayor énfasis */
+}
+
+select {
+    width: 80%;
+    /* Ocupa todo el ancho del contenedor */
+    padding: 10px;
+    /* Espaciado interno */
+    margin-top: 10px;
+    /* Espacio entre el label y el select */
+    border: 1px solid #ccc;
+    /* Bordes */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    background-color: #fff;
+    /* Color de fondo */
+    font-size: 16px;
+    /* Tamaño de fuente */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el select */
+}
+
+/* Cambios de color al hacer hover */
+select:hover {
+    border-color: #8e1e1e;
+    /* Cambia el color del borde al pasar el ratón */
+}
+
+/* Opciones del menú desplegable */
+option {
+    padding: 10px;
+    /* Espaciado interno para las opciones */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navbar a {
+        margin: 5px 0;
+    }
+
+    .login-box {
+        width: 90%;
+        /* Más ancho en pantallas pequeñas */
+        padding: 20px;
+        /* Reducir padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px;
+    }
+
+    .login-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .login-box h2 {
+        font-size: 1.5em;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="number"],
+    .login-box input[type="date"],
+    .login-box button[type="submit"],
+    button.back-button {
+        font-size: 0.9em;
+    }
+}

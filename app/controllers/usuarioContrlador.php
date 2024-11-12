@@ -8,23 +8,29 @@ class AuthController {
         $usuarioData = $usuarioModel->obtenerPorUsuario($usuario);
 
         if ($usuarioData) {
-            if ($contrasena === $usuarioData['pass']) {
-
+            if ($contrasena == $usuarioData['pass']) {
                 session_start();
                 $_SESSION['usuario'] = $usuarioData['usuario'];
                 $_SESSION['tipoUsuario'] = $usuarioData['tipoUsuario'];
-                header("Location: panel.html");
+
+                // Role-based redirection
+                if ($_SESSION['tipoUsuario'] == 'admin') {
+                    header("Location: panel.php"); 
+                } elseif ($_SESSION['tipoUsuario'] == 'cliente') {
+                    header("Location: panel.php"); 
+                } else {
+                    header("Location: panel.php"); // Default panel
+                }
                 exit;
             } else {
-                // Contraseña incorrecta
-                echo "<script>alert('Contraseña incorrecta.'); window.location.href='inicioSesion.html';</script>";
+                echo "<script>alert('Contraseña incorrecta.'); window.location.href='../views/inicioSesion.html';</script>";
             }
         } else {
-            // Usuario no encontrado
-            echo "<script>alert('Usuario no encontrado.'); window.location.href='inicioSesion.html';</script>";
+            echo "<script>alert('Usuario no encontrado.'); window.location.href='../views/inicioSesion.html';</script>";
         }
     }
 }
+
 
 
 ?>

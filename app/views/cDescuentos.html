@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Descuento - Genfarmex</title>
-    <link rel="stylesheet" href="../static/css/inicio.css">
-    
+    <link rel="stylesheet" href="../static/css/create.css">
 </head>
+
 <body>
     <header class="header">
         <div class="logo">
-          <img src="../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
+            <img src="../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
         </div>
         <nav class="navbar">
-          <a href="#">Información</a>
-          <a href="#">Ubicación</a>
-          <a href="#">Contactos</a>
+            <a href="#">Información</a>
+            <a href="#">Ubicación</a>
+            <a href="#">Contactos</a>
         </nav>
-      </header>
+        <button onclick="location.href='logout.php'" class="logout-button">Cerrar sesión</button>
+    </header>
+    
     <div class="container">
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img">
         </div>
+        
         <div class="login-box">
             <h2>Crear descuento</h2>
-            <form action="crearDescuento.php" method="POST">
-                <input type="text" name="nombre" placeholder="Nombre del Descuento" required>
-                <input type="number" step="0.01" name="porcentaje" placeholder="Porcentaje" required>
-                <input type="date" name="fechaCreacion" required>
-                <button type="submit">Crear Descuento</button>
+            <form action="../templates/crearDescuento.php" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre del descuento" required>
+                <input type="number" step="0.01" name="porcentaje" placeholder="Porcentaje de descuento a agregar" required>
+                <input type="date" name="fechaCreacion" placeholder="Fecha de creación" required>
+                <button type="submit">Registrar</button>
             </form>
+            <button class="back-button" onclick="history.back()">Regresar</button>
         </div>
-        
     </div>
+
     <footer>
         <p>Copyright © 2022 Genfarmex - Todos los derechos reservados.</p>
         <a href="#">Aviso de Privacidad</a>
     </footer>
     <script defer src="../static/js/inicio.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,76 @@
+/* Restablecer estilos para todos los elementos dentro del formulario */
+.form-container *,
+.form-container *::before,
+.form-container *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos generales de HTML y body, aplicados solo a .form-container */
+.form-container {
+    height: 100%;
+    width: 80%;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container .form-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Estilos de encabezado solo dentro de la sección del formulario */
+.form-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos de etiqueta solo dentro del formulario */
+.form-container label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-top: 15px;
+}
+
+/* Estilos de campos de entrada solo dentro del formulario */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilos del botón de envío solo dentro del formulario */
+.form-container .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #004085;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.form-container .btn-submit:hover {
+    background-color: #003366;
+}

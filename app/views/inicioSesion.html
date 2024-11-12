@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Genfarmex</title>
     <link rel="stylesheet" href="../static/css/inicio.css">
-    
+
 </head>
+
 <body>
     <header class="header">
         <div class="logo">
-          <img src="../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
+            <img src="../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
         </div>
         <nav class="navbar">
-          <a href="#">Información</a>
-          <a href="#">Ubicación</a>
-          <a href="#">Contactos</a>
+            <a href="#">Información</a>
+            <a href="#">Ubicación</a>
+            <a href="#">Contactos</a>
         </nav>
-      </header>
+    </header>
     <div class="container">
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img">
         </div>
         <div class="login-box">
             <h2>Iniciar sesión</h2>
-            <form id="loginForm" action="inico.php" method="POST">
+            <form id="loginForm" action="../templates/inico.php" method="POST">
                 <input type="text" name="usuario" placeholder="Usuario" required>
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
                 <div class="button-group">
-                    <button type="button" class="btn-back">Regresar</button>
+                    <button class="btn-back" onclick="window.location.href='../index.html'">Regresar</button>
                     <button type="submit" class="btn-login">Ingresar</button>
                 </div>
             </form>
         </div>
-        
+
     </div>
     <footer>
         <p>Copyright © 2022 Genfarmex - Todos los derechos reservados.</p>
@@ -41,4 +43,5 @@
     </footer>
     <script defer src="../static/js/inicio.js"></script>
 </body>
+
 </html>
