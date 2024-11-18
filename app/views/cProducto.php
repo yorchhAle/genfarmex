@@ -15,12 +15,18 @@
         </div>
         <div class="login-box">
             <h2>Crear Producto</h2>
-            <form action="../templates/Producto/crearProducto.php" method="POST">
-                <input type="text" name="clave" placeholder="Clave del Producto" required>
-                <input type="text" name="desc" placeholder="Descripción" required>
-                <input type="text" name="exis" placeholder="Existencia" onkeypress="if((event.keyCode < 48) || (event.keyCode >57)){event.returnValue=false;}" required>
-                <input type="text" name="pre" placeholder="Precio" onkeypress="if((event.keyCode < 48) || (event.keyCode >57)){event.returnValue=false;}" required>
-                <button type="submit">Crear Producto</button>
+            <form action="../templates/crearProducto.php" method="POST">
+                <input type="text" name="clave" id="clave" placeholder="Clave del Producto" required>
+                <input type="text" name="desc" id="desc" placeholder="Descripción" required>
+                <input type="number" name="exis" id="exis" placeholder="Existencia" min="0" required>
+                <p class="alert alert-danger" name="aviExis" id="aviExis" style="display: none">
+                    No se puede ingresar un valor negativo de existencias
+                </p>
+                <input type="number" name="pre" id="pre" placeholder="Precio" min="0" required>
+                <p class="alert alert-danger" name="aviPre" id="aviPre" style="display: none">
+                    No se puede ingresar un valor negativo en precio
+                </p>
+                <button type="submit" onclick="return validateCProd();">Crear Producto</button>
             </form>
         </div>
         

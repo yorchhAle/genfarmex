@@ -6,11 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $exis = $_POST['exis'];
     $pre = $_POST['pre'];
 
-    $productoController = new ProductoController();
+    $productoController = new ProductoController();     
     if ($productoController->crearProducto($clave, $desc, $exis, $pre)) {
         echo "<script>alert('Producto creado exitosamente.'); window.location.href='listarProducto.php';</script>";
     } else {
-        echo "<script>alert('Error: La clave ya existe.'); window.location.href='../views/cProducto.html';</script>";
+        echo "<script>alert('Error: La clave ya existe.'); window.location.href='../views/cProducto.php';</script>";
     }
 }
 ?>

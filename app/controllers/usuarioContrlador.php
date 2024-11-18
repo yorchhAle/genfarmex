@@ -8,7 +8,7 @@ class AuthController {
         $usuarioData = $usuarioModel->obtenerPorUsuario($usuario);
 
         if ($usuarioData) {
-            if ($contrasena == $usuarioData['pass']) {
+            if ($contrasena == $usuarioData['pass']) { 
                 session_start();
                 $_SESSION['usuario'] = $usuarioData['usuario'];
                 $_SESSION['tipoUsuario'] = $usuarioData['tipoUsuario'];

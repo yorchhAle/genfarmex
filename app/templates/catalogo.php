@@ -80,8 +80,7 @@ $totalPaginas = ceil($totalProductos / 40);
                     };
                 })();
             </script>
-            <a href="actualizarProducto.php?id=<?php echo $producto['id']; ?>">Actualizar</a>
-            <a href="eliminarProducto.php?id=<?php echo $producto['id']; ?>">Eliminar</a>
+            <a class="anadir" href="carrito.php">Añadir</a>
         </div>
     <?php
     } 
