@@ -9,7 +9,7 @@ class DetPedController {
     }
 
     // Crear un detallePedido
-    public function crearProveedor($canti, $pre, $idPed,$id) {
+    public function crearDetPed($canti, $pre, $idPed,$id) {
         return $this->modeloDetPed->crearDetPed($canti, $pre, $idPed,$id);
     }
 

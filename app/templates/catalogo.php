@@ -13,6 +13,14 @@ $totalProductos = $controller->contarProductos($filtro);
 $totalPaginas = ceil($totalProductos / 40);
 ?>
 
+<?php 
+session_start();
+if (!isset($_SESSION['tipoUsuario']) || ($_SESSION['tipoUsuario'] !== 'cliente' && $_SESSION['tipoUsuario'] !== 'admin')) {
+    header("Location: ../views/inicioSesion.html");
+    exit;
+}
+?> 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,7 +48,7 @@ $totalPaginas = ceil($totalProductos / 40);
 
     <div class="catalogo">
     <?php 
-    foreach ($productos as $producto) {
+        foreach ($productos as $producto) {
     ?>
         <div class="card">
             <p><bold>Clave:</bold> <?php echo htmlspecialchars($producto['clave']); ?></p>
@@ -52,12 +60,32 @@ $totalPaginas = ceil($totalProductos / 40);
                 <div class="value">0</div>
                 <div class="add">+</div>
             </div>
+            <form method="POST" action="carrito.php">
+                <input type="hidden" name="cantidad" class="cantidad" value="0">
+                <a class="anadir" href="#" data-id="<?php echo $producto['id']; ?>" onclick="actualizarHref(this, event)">Añadir</a>
+            </form>
             <script>
+                function actualizarHref(anchor, event) {
+                    const card = anchor.closest(".card");
+                    const value = parseInt(card.querySelector(".value").innerHTML, 10); // Obtén el valor actual como número
+                    const id = anchor.getAttribute("data-id"); // Obtén el id del atributo data-id
+
+                    if (value > 0) {
+                        // Si totalValue es mayor a 0, actualiza el href con los valores dinámicos
+                        anchor.href = `anadirCarrito.php?id=${id}&cantidad=${value}`;
+                    } else {
+                        // Si no, evita el comportamiento predeterminado del enlace
+                        event.preventDefault();
+                        alert("La cantidad debe ser mayor a 0 para añadir al carrito.");
+                    }
+                }
+
                 (function() {
                     const card = document.currentScript.closest(".card");
                     const sub = card.querySelector(".sub");
                     const value = card.querySelector(".value");
                     const add = card.querySelector(".add");
+                    const cantidadInput = card.querySelector(".cantidad");
                     const maxExistencias = parseInt(card.querySelector(".wrapper").getAttribute("data-existencias"), 10);
 
                     let totalValue = 0;
@@ -67,6 +95,7 @@ $totalPaginas = ceil($totalProductos / 40);
                         if (totalValue < maxExistencias) {
                             totalValue++;
                             value.innerHTML = totalValue;
+                            cantidadInput.value = totalValue;
                         } else {
                             alert("No puedes agregar más de las existencias disponibles.");
                         }
@@ -76,19 +105,18 @@ $totalPaginas = ceil($totalProductos / 40);
                         if (totalValue > 0) {
                             totalValue--;
                             value.innerHTML = totalValue;
+                            cantidadInput.value = totalValue;
                         }
                     };
                 })();
             </script>
-            <a class="anadir" href="carrito.php">Añadir</a>
+
+
         </div>
     <?php
     } 
     ?>
-
 </div>
-
-
 
     <br>
     <!-- Paginación -->

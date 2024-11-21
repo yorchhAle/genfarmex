@@ -1,32 +1,42 @@
 <?php
 require_once __DIR__ . '../../../config/db.php';
 
-class ModeloDetPed {
+class ModeloPed {
     private $conn;
 
     public function __construct() {
         $this->conn = getConnection();
     }
 
-    // Crear un detallePedido
-    public function crearDetPed($canti, $pre, $idPed, $id) {
-        $sql = "INSERT INTO detallepedido (cantidad, precioUnitario, idPedido, id) VALUES (?, ?, ?, ?)";
+    // Crear un Pedido
+    public function crearPed($idCliente) {
+        $sql = "INSERT INTO pedido (fechaPedido, estado, idcliente) VALUES (NOW(), 'activo', ?)";
         $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $idCliente);
+        $stmt->execute();
+        return $stmt->insert_id;
+    }
+    
 
+    //confirmar pedido
+    public function confirmarPed($idPedido) {
+        $sql = "UPDATE pedido SET estado = 'confirmado' WHERE idpedido = ?";
+        $stmt = $this->conn->prepare($sql);
+    
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $this->conn->error);
         }
-
-        $stmt->bind_param("ifii", $canti, $pre, $idPed, $id);
-
+    
+        $stmt->bind_param("i", $idPedido);
+    
         $resultado = $stmt->execute();
         $stmt->close();
-
+    
         return $resultado;
     }
 
     // Leer todos los detallePedido
-    public function obtenerDetPed($pedido) {
+    public function obtenerPed($pedido) {
         $sql = "SELECT * FROM detallepedido WHERE idpedido = ?";
         $stmt = $this->conn->prepare($sql);
 
@@ -51,6 +61,17 @@ class ModeloDetPed {
 
         return $detalles;
     }
+
+    //para obtener el pedido activo del cliente
+    public function obtenerPedidoActivoPorCliente($idCliente) {
+        $sql = "SELECT * FROM pedido WHERE idcliente = ? AND estado = 'activo' LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $idCliente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+    
 
     // Actualizar un detallePedido
     public function actualizarDetPed($iddetallepedido, $cantidad) {

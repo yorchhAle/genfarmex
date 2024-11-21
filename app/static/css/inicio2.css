@@ -208,6 +208,12 @@ form button{
 .card .anadir{
     background-color: #00008b;
     justify-content: space-evenly;
+    color: black;
     align-items: center;
     display: flex;
+}
+
+.tabla-pedido{
+    width: 80vh;
+    background-color: #00008b;
 }
