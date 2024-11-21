@@ -15,12 +15,9 @@
     <div class="menuLateral" id="sidebar">
         <button class="close-btn" onclick="toggleMenu()">×</button>
         <ul>
-            <li><a href="../templates/gestionesPanel.php">Gestiones</a></li>
-            <li><a href="../templates/reportesPanel.php">Generar reportes</a></li>
-            <li><a href="#">Generar consultas</a></li>
-            <li><a href="../templates/panel.php">Generar respaldo de BD</a></li>
-            <li><a href="../templates/panel.php">Ir al panel principal</a></li>
-            <li><a href="../respaldos/index.php">Generar respaldo de BD</a></li>
+            <li><a href="../templates/carrito.php">Ver carrito</a></li>
+            <li><a href="../templates/catalogo.php">Ver catalogo</a></li>
+
         </ul>
     </div>
 </body>

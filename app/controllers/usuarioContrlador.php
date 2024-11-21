@@ -17,9 +17,11 @@ class AuthController {
                 if ($_SESSION['tipoUsuario'] == 'admin') {
                     header("Location: panel.php"); 
                 } elseif ($_SESSION['tipoUsuario'] == 'cliente') {
-                    header("Location: panel.php"); 
-                } else {
-                    header("Location: panel.php"); // Default panel
+                    header("Location:catalogo.php"); 
+                } elseif ($_SESSION['tipoUsuario'] == 'cliente')  {
+                    header("Location:catalogo.php"); 
+                }else{
+                    header("Location: login.php");
                 }
                 exit;
             } else {

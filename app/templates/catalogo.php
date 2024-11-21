@@ -25,7 +25,7 @@ if (!isset($_SESSION['tipoUsuario']) || ($_SESSION['tipoUsuario'] !== 'cliente' 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/inicio2.css">
+    <link rel="stylesheet" href="../static/css/catalogo2.css">
     
     <title>Catalogo - Genfarmex</title>
 </head>
@@ -33,7 +33,7 @@ if (!isset($_SESSION['tipoUsuario']) || ($_SESSION['tipoUsuario'] !== 'cliente' 
     <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 </header>
 <body>
-<?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
+<?php include '../includes/menuCliente.php'; ?> <!-- Incluir el menú -->
     <hr>    
     <div class="barra-busq">
     <h1>Buscar Productos</h1>

@@ -10,6 +10,7 @@ $modeloProducto = new ModeloProductos();
 $modeloDetallePedido = new ModeloDetPed();
 $modeloPed = new ModeloPed(); // Aquí usamos modeloPed, según tu aclaración
 
+
 // Validar sesión
 if (!isset($_SESSION['tipoUsuario']) || ($_SESSION['tipoUsuario'] !== 'cliente' && $_SESSION['tipoUsuario'] !== 'admin')) {
     header("Location: ../views/inicioSesion.html");
