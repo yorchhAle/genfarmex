@@ -10,11 +10,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-=======
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->   
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
     <h1 align="center">CRUD Provedores</h1>
 
     <div class="contenedor cuatro-columnas">

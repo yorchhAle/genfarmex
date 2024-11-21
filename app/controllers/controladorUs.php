@@ -73,6 +73,11 @@ class UsController
         });
     }
 
+    public function listarEmpleados()
+{
+    return $this->modeloUs->obtenerEmpleadosConDatos();
+}
+
     public function obtenerClienteConUsuario($idUsuario)
     {
         return $this->modeloUs->obtenerClienteConUsuario($idUsuario);
@@ -93,6 +98,7 @@ class UsController
         return $this->modeloUs->obtenerUsuariosC();
     }
 
+
     public function obtenerUsuariosA()
     {
         return $this->modeloUs->obtenerUsuariosA();
@@ -109,7 +115,6 @@ class UsController
 
             // Actualizar usuario
             $this->modeloUs->actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario);
-
             // Actualizar según el tipo
             if ($tipoUsuario == 'cliente') {
                 $this->modeloUs->actualizarCliente($idUsuario, $datosAdicionales['credito'], $datosAdicionales['estatus']);
@@ -125,9 +130,7 @@ class UsController
         }
     }
 
-
-    public function eliminarUsuario($idUsuario)
-    {
+    public function eliminarUsuario($idUsuario){
         return $this->modeloUs->eliminarUsuarioConDatos($idUsuario);
     }
 }

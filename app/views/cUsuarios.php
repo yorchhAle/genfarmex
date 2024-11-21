@@ -8,7 +8,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 }
 ?>
 
- 
+
 <!DOCTYPE html>
 <html lang="es">
 

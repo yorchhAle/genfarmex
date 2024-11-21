@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <label for="tipoUsuario">Tipo de Usuario:</label>
                         <select name="tipoUsuario" id="tipoUsuario" required>
-                            <option value="admin" <?php echo (isset($AdminActual['tipoUsuario']) && $AdminActual['tipoUsuario'] == 'admin') ? 'selected' : ''; ?>>Admin</option>
+                            <option value="empleado" <?php echo (isset($AdminActual['tipoUsuario']) && $AdminActual['tipoUsuario'] == 'empleado') ? 'selected' : ''; ?>>Empleado</option>
                         </select>
                         <button type="submit" class="btn-submit">Actualizar admin</button>
                     </form>
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <script>
                     function confirmarActualizacion() {
-                        return confirm("¿Estás seguro de que deseas actualizar los datos de este Admin?");
+                        return confirm("¿Estás seguro de que deseas actualizar los datos de este Empleado?");
                     }
                 </script>
             <?php

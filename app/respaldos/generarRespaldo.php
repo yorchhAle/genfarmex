@@ -5,11 +5,6 @@ $db_name = 'genfarmexbd';
 $db_user = 'root';
 $db_pass = '';
 
-<<<<<<< HEAD:respaldos/generarRespaldo.php
-// Nombre del archivo de respaldo
-$fecha = date("Y-m-d_h-i-s");
-$salida_sql = $db_name . '_' . $fecha . '.sql';
-=======
 // Nombre del archivo de respaldo y ruta de la carpeta de respaldo
 $fecha = date("Ymd-His");
 $carpeta_backup = 'backup';
@@ -19,7 +14,6 @@ $salida_sql = $carpeta_backup . '/' . $db_name . '_' . $fecha . '.sql';
 if (!file_exists($carpeta_backup)) {
     mkdir($carpeta_backup, 0777, true);
 }
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee:app/respaldos/generarRespaldo.php
 
 // Conectar a la base de datos
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -59,9 +53,5 @@ fclose($file);
 $conn->close();
 
 echo "Respaldo creado: $salida_sql";
-<<<<<<< HEAD:respaldos/generarRespaldo.php
-header('Location:')
-=======
 echo "<script>alert('Respaldo creado. $salida_sql'); window.location.href='index.php';</script>";
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee:app/respaldos/generarRespaldo.php
 ?>

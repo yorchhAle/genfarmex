@@ -21,6 +21,19 @@ class ModeloUs
         return false;
     }
 
+    public function obtenerEmpleadosConDatos()
+{
+    $query = "
+        SELECT 
+            u.idusuario, u.nombre, u.apellido, u.usuario, u.correo, u.telefono, u.direccion, u.tipoUsuario, 
+            e.rol, e.fechaContratacion, e.sueldo
+        FROM usuarios u
+        INNER JOIN empleados e ON u.idusuario = e.idusuario
+    ";
+    $result = $this->conn->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
     // Leer todos los usuario
     public function obtenerUsuarios(){
         $sql = "SELECT * FROM usuarios";
@@ -35,6 +48,7 @@ class ModeloUs
         $stmt->bind_param("sssssssi", $nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario, $id);
         return $stmt->execute();
     }
+    
 
     // Eliminar un usuario
     public function eliminarUs($id){
