@@ -16,9 +16,10 @@
         <button class="close-btn" onclick="toggleMenu()">×</button>
         <ul>
             <li><a href="../templates/gestionesPanel.php">Gestiones</a></li>
-            <li><a href="#">Generar reportes</a></li>
+            <li><a href="../templates/reportesPanel.php">Generar reportes</a></li>
             <li><a href="#">Generar consultas</a></li>
-            <li><a href="#">Generar respaldo de BD</a></li>
+            <li><a href="../templates/panel.php">Generar respaldo de BD</a></li>
+            <li><a href="../templates/panel.php">Ir al panel principal</a></li>
         </ul>
     </div>
 </body>

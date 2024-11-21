@@ -13,7 +13,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/css/menuOpciones.css">
+    <link rel="stylesheet" href="../static/css/menuOpciones2.css">
 </head>
 
 <body>
@@ -36,23 +36,8 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
             </div>
             <a href="listarAdmins.php">Empezar</a>
         </article>
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
-                <img src="../static/img/actualizar.png" alt="Imagen Admin">
-                <h1>Actualizar</h1>
-            </div>
-            <a href="eliminarActAdm.php">Empezar</a>
-        </article>
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
-                <img src="../static/img/eliminar.png" alt="Imagen Blog 4">
-                <h1>Eliminar</h1>
-            </div>
-            <a href="eliminarActAdm.php">Empezar</a>
-        </article>
     </div>
+    <button class="back-button" onclick="history.back()">Regresar</button> <!-- Botón de regreso -->
 </body>
 
 </html>

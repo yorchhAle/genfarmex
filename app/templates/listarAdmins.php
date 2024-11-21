@@ -3,13 +3,13 @@ require_once '../controllers/controladorUs.php';
 $proveedorController = new UsController();
 $clientes = $proveedorController->obtenerUsuariosA();
 ?>
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
-?> 
+?>
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
 
     <div class="container main-content">
-        <h2>Lista de Clientes</h2>
+        <h2>Lista de administradores</h2>
 
         <table class="table table-light tabla-descuentos">
             <thead>
@@ -38,19 +38,16 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     <th>Apellido</th>
                     <th>Usuario</th>
                     <th>Contraseña</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
                     <th>Tipo</th>
-                    <th>Fecha de alta</th>
-                    <th>Estatus</th>
-                    <th>Observaciones</th>
-
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $clientes = (new UsController())->listarAdmins();
-                ?>
-            <tbody>
-                <?php
                 foreach ($clientes as $cliente) {
                     echo "<tr>";
                     echo "<td>{$cliente['idusuario']}</td>";
@@ -58,21 +55,32 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                     echo "<td>{$cliente['apellido']}</td>";
                     echo "<td>{$cliente['usuario']}</td>";
                     echo "<td>{$cliente['pass']}</td>";
+                    echo "<td>{$cliente['correo']}</td>";
+                    echo "<td>{$cliente['telefono']}</td>";
                     echo "<td>{$cliente['tipoUsuario']}</td>";
-                    echo "<td>{$cliente['fechaAlta']}</td>";
-                    echo "<td>{$cliente['estatus_admin']}</td>";
-                    echo "<td>{$cliente['observaciones']}</td>";
-                    
+                    echo "<td class='acciones'>";
+                    echo "<a href='actualizarAdmis.php?id={$cliente['idusuario']}' class='btn actualizar' aria-label='Editar cliente'>Editar</a>";
+                    echo "</td>";
+                    echo "<td class='acciones'>";
+                    echo "<a href='eliminarUsuario.php?id={$cliente['idusuario']}' 
+                             class='btn eliminar' 
+                             aria-label='Eliminar cliente' 
+                             onclick='return confirmarEliminacion();'>Eliminar</a>";
+                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>
-            </tbody>
-
             </tbody>
         </table>
 
         <button class="back-button" onclick="history.back()">Regresar</button>
     </div>
+
+    <script>
+        function confirmarEliminacion() {
+            return confirm("¿Estás seguro de que deseas eliminar este usuario?");
+        }
+    </script>
 
 </body>
 

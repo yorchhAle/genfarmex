@@ -1,6 +1,5 @@
 <?php
 require_once '../models/modeloProveedores.php';
-
 class ProveedorController {
     private $modeloProveedores;
 
@@ -8,24 +7,33 @@ class ProveedorController {
         $this->modeloProveedores = new ModeloProveedores();
     }
 
-    // Crear un descuento
-    public function crearProveedor($nombre, $contacto,$telefono,$email,$direccion) {
-        return $this->modeloProveedores->crearProveedor($nombre, $contacto,$telefono,$email,$direccion);
+    // Crear un proveedor
+    public function crearProveedor($nombre, $contacto, $telefono, $email, $direccion) {
+        // Validar existencia de correo, teléfono o dirección
+        if ($this->modeloProveedores->validarExistencia($telefono, $email, $direccion)) {
+            return "Error: El correo, teléfono o dirección ya están registrados.";
+        }
+        
+        return $this->modeloProveedores->crearProveedor($nombre, $contacto, $telefono, $email, $direccion);
     }
 
-    // Obtener todos los descuentos
+    // Obtener todos los proveedores
     public function obtenerProveedores() {
         return $this->modeloProveedores->obtenerProveedores();
     }
 
-    // Actualizar un proveedores
-    public function actualizarProveedor($idproveedores, $nombre, $contacto,$telefono,$email,$direccion) {
-        return $this->modeloProveedores->actualizarProveedor($idproveedores, $nombre, $contacto,$telefono,$email,$direccion);
+    // Actualizar un proveedor
+    public function actualizarProveedor($idProveedor, $nombreP, $contactoP, $telefonoP, $correoP, $direccionP) {
+        return $this->modeloProveedores->actualizarProveedor($idProveedor, $nombreP, $contactoP, $telefonoP, $correoP, $direccionP);
     }
 
     // Eliminar un proveedor
-    public function eliminarProveedor($idproveedores) {
-        return $this->modeloProveedores->eliminarProveedor($idproveedores);
+    public function eliminarProveedor($idProveedor) {
+        return $this->modeloProveedores->eliminarProveedor($idProveedor);
+    }
+
+    public function obtenerProveedorPorId($idProveedores) {
+        return $this->modeloProveedores->obtenerProveedorPorId($idProveedores);
     }
 }
 ?>

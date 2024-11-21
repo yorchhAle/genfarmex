@@ -10,7 +10,6 @@ function getConnection() {
     if ($conn->connect_error) {
         die("Conexión fallida: " . $conn->connect_error);
     }
-
     return $conn;
 }
 ?>

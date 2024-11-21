@@ -1,12 +1,12 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
-?> 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,37 +15,36 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Usuarios - Genfarmex</title>
     <link rel="stylesheet" href="../static/css/create.css">
-    
+
     <script>
         function toggleAdditionalForm() {
-    const tipoUsuario = document.getElementById("tipoUsuario").value;
-    const additionalForms = document.querySelectorAll(".additional-form");
+            const tipoUsuario = document.getElementById("tipoUsuario").value;
+            const additionalForms = document.querySelectorAll(".additional-form");
 
-    // Ocultar todos los formularios adicionales y eliminar "required" de sus campos
-    additionalForms.forEach(form => {
-        form.style.display = "none";
-        form.querySelectorAll("input, select").forEach(input => {
-            input.removeAttribute("required");
-        });
-    });
-
-    // Mostrar el formulario correspondiente y añadir "required" a sus campos
-    if (tipoUsuario) {
-        const selectedForm = document.getElementById(tipoUsuario + "Form");
-        if (selectedForm) {
-            selectedForm.style.display = "block";
-            selectedForm.querySelectorAll("input, select").forEach(input => {
-                input.setAttribute("required", "required");
+            // Ocultar todos los formularios adicionales y eliminar "required" de sus campos
+            additionalForms.forEach(form => {
+                form.style.display = "none";
+                form.querySelectorAll("input, select").forEach(input => {
+                    input.removeAttribute("required");
+                });
             });
-        }
-    }
-}
 
+            // Mostrar el formulario correspondiente y añadir "required" a sus campos
+            if (tipoUsuario) {
+                const selectedForm = document.getElementById(tipoUsuario + "Form");
+                if (selectedForm) {
+                    selectedForm.style.display = "block";
+                    selectedForm.querySelectorAll("input, select").forEach(input => {
+                        input.setAttribute("required", "required");
+                    });
+                }
+            }
+        }
     </script>
 </head>
 
 <body>
-<?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
+    <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
 
     <div class="container">
         <div class="logo">
@@ -59,7 +58,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <input type="text" name="usuario" placeholder="Usuario" required>
                 <input type="text" name="pass" placeholder="Contraseña asignada" required>
                 <input type="email" name="email" placeholder="Email del usuario" required>
-                <input type="tel" name="numeroT" placeholder="Número de teléfono" required pattern="[0-9]{10,15}"title="Ingrese un número de teléfono válido (10 a 15 dígitos)">
+                <input type="tel" name="numeroT" placeholder="Número de teléfono" required pattern="[0-9]{10,15}" title="Ingrese un número de teléfono válido (10 a 15 dígitos)">
                 <input type="text" name="direccion" placeholder="Dirección del usuario" required>
 
                 <label for="tipoUsuario">Tipo de Usuario:</label>
@@ -109,8 +108,8 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
             </form>
         </div>
     </div>
+    <br> <br>
 </body>
 
 </html>
 <?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->
-

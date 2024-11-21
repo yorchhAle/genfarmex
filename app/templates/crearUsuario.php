@@ -12,19 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo=$_POST['tipoUsuario'];
     $datosAdicionales = [];
 
-    if ($tipo === 'cliente') {
+    if ($tipo == 'cliente') {
         $datosAdicionales = [
             'credito' => $_POST['credito'],
             'estatus' => $_POST['estatus'],
             'fechaCreacion' => $_POST['fechaCreacion']
         ];
-    } elseif ($tipo === 'empleado') {
+    } elseif ($tipo == 'empleado') {
         $datosAdicionales = [
             'rol' => $_POST['rol'],
             'fechaContrato' => $_POST['fechaContrato'],
             'salario' => $_POST['salario']
         ];
-    } elseif ($tipo === 'admin') {
+    } elseif ($tipo == 'admin') {
         $datosAdicionales = [
             'fechaCreacion' => $_POST['fechaCreacion'],
             'estatus' => $_POST['estatus'],
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $usuario = new UsController();
-    $usuarioExistente = $usuario->obtenerUsuarioPorNombre($usuarioNombre); // Suponiendo que tienes una función para obtener el usuario por nombre
+    $usuarioExistente = $usuario->obtenerUsuarioPorNombre($usuarioNombre); 
 if ($usuarioExistente) {
     echo "<script>alert('El usuario ya existe, elige otro nombre de usuario.'); window.location.href='../views/cUsuarios.php';</script>";
     exit;

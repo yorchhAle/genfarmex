@@ -30,15 +30,16 @@ h1 {
     padding: 4rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-    gap: 2rem;
+    /* Tres columnas */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; /* Espacio entre elementos */
 }
 
 /* Estilos para las columnas */
 .entrada-blog {
     background-color: #b0d4f1;
     color: white;
-    padding: 20px;
+    padding: 80px;
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
@@ -62,6 +63,7 @@ h1 {
 .entrada-blog:hover a {
     color: #ffffff; /* Cambia el color del enlace al pasar el mouse */
 }
+
 .entrada-blog:hover h1 {
     color: #ff0000; /* Cambia el color del enlace al pasar el mouse */
 }
@@ -80,7 +82,7 @@ h1 {
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .contenedor {
-        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas medianas */
     }
 
     h1 {

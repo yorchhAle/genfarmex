@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $descuentoController = new DescuentoController();
     if ($descuentoController->actualizarDescuento($idDescuento, $nombre, $porcentaje, $fechaCreacion)) {
-        echo "<script>alert('Descuento actualizado exitosamente.'); window.location.href='eliminarActDes.php';</script>";
+        echo "<script>alert('Descuento actualizado exitosamente.'); window.location.href='listarDescuentos.php';</script>";
     } else {
         echo "<script>alert('Error al actualizar el descuento.'); window.location.href='eliminarActDes.php';</script>";
     }
@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </head>
         <body>
             <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-            <h2>Actualizar Descuento</h2>
+            <h2 align="center">Actualizar Descuento</h2>
             <div class="form-container">
-                
-                <form action="actualizarDescuento.php" method="POST">
-                <input type="hidden" name="idDecuentos" value="<?php echo htmlspecialchars($descuentoActual['idDecuentos']); ?>">
+                <form action="actualizarDescuento.php" method="POST" onsubmit="return confirmarActualizacion();">
+                    <input type="hidden" name="idDecuentos" value="<?php echo htmlspecialchars($descuentoActual['idDecuentos']); ?>">
+
                     <label for="nombre">Nombre del Descuento:</label>
                     <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($descuentoActual['nombre']); ?>" required>
 
@@ -53,6 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
 
+            <script>
+                function confirmarActualizacion() {
+                    return confirm("¿Estás seguro de que deseas actualizar este descuento?");
+                }
+            </script>
         </body>
         </html>
 <?php

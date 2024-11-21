@@ -1,0 +1,19 @@
+body {
+    background-color: #cacaca;
+}
+.container {
+    margin-top: 50px;
+}
+.form-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btn-primary {
+    background-color: #2596be;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #1b6e8a;
+}

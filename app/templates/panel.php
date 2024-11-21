@@ -34,7 +34,7 @@ include '../includes/header.php'; // Incluir el encabezado
                 <img src="../static/img/cliente.png" alt="Imagen Blog 2">
                 <h1>Generar reportes</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="reportesPanel.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">

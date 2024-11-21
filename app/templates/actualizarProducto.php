@@ -36,8 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <?php
     if ($productoActual) {?>
+    <h2 align="center">Actualizar Producto</h2>
         <div class="form-container">
-        <h2>Actualizar Producto</h2>
+        
     <form action='actualizarProducto.php' method='POST'>
             <input type='hidden' name='id' value="<?php echo htmlspecialchars( $productoActual['id'])?>">
             <label for="clave">Clave</label>

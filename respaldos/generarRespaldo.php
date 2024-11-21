@@ -7,7 +7,7 @@ $db_user = 'root';
 $db_pass = '';
 
 // Nombre del archivo de respaldo
-$fecha = date("Ymd-His");
+$fecha = date("Y-m-d_h-i-s");
 $salida_sql = $db_name . '_' . $fecha . '.sql';
 
 // Conectar a la base de datos
@@ -48,4 +48,5 @@ fclose($file);
 $conn->close();
 
 echo "Respaldo creado: $salida_sql";
+header('Location:')
 ?>

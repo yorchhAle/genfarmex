@@ -11,12 +11,26 @@ class UsController
     }
     public function crearUsuario($nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario, $datosAdicionales)
     {
+        $usuarioPorCorreo = $this->modeloUs->obtenerUsuarioPorCorreo($correo);
+        if ($usuarioPorCorreo) {
+            echo "<script>alert('El correo ya está registrado.'); window.location.href='../views/cUsuarios.php';</script>";
+            return false;
+        }
+
+        // Validar que el teléfono no esté duplicado
+        $usuarioPorTelefono = $this->modeloUs->obtenerUsuarioPorTelefono($telefono);
+        if ($usuarioPorTelefono) {
+            echo "<script>alert('El número de teléfono ya está registrado.'); window.location.href='../views/cUsuarios.php';</script>";
+            return false;
+        }
+
+
         $idUsuario = $this->modeloUs->crearUs($nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario);
         if (!$idUsuario) {
             echo "Error: User creation failed.";
             return false;
-        }else{
-            echo "ID de usuario creado: " . $idUsuario; 
+        } else {
+            echo "ID de usuario creado: " . $idUsuario;
         }
 
         if ($idUsuario) {
@@ -43,18 +57,30 @@ class UsController
         }
     }
 
-    public function listarClientes() {
+    public function listarClientes()
+    {
         $usuarios = $this->modeloUs->obtenerUsuariosConDatosAdicionales();
-        return array_filter($usuarios, function($usuario) {
+        return array_filter($usuarios, function ($usuario) {
             return strtolower($usuario['tipoUsuario']) === 'cliente';
         });
     }
 
-    public function listarAdmins() {
+    public function listarAdmins()
+    {
         $usuarios = $this->modeloUs->obtenerUsuariosConDatosAdicionales();
-        return array_filter($usuarios, function($usuario) {
+        return array_filter($usuarios, function ($usuario) {
             return strtolower($usuario['tipoUsuario']) == 'admin';
         });
+    }
+
+    public function obtenerClienteConUsuario($idUsuario)
+    {
+        return $this->modeloUs->obtenerClienteConUsuario($idUsuario);
+    }
+
+    public function obtenerAdminConUsuario($idUsuario)
+    {
+        return $this->modeloUs->obtenerAdminConUsuario($idUsuario);
     }
 
     public function obtenerUsuarioPorNombre($usuario)
@@ -74,22 +100,31 @@ class UsController
 
     public function obtenerUsuarios($idUsuario)
     {
-        $modelo = new ModeloUs();
-        return $modelo->obtenerUsuarioPorID($idUsuario);
+        return $this->modeloUs->obtenerUsuarioPorID($idUsuario);
     }
 
     public function actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario, $datosAdicionales)
     {
-        $this->modeloUs->actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario);
+        try {
 
-        if ($tipoUsuario === 'cliente') {
-            $this->modeloUs->actualizarCliente($idUsuario, $datosAdicionales['credito'], $datosAdicionales['estatus']);
-        } elseif ($tipoUsuario === 'empleado') {
-            $this->modeloUs->actualizarEmpleado($idUsuario, $datosAdicionales['puesto'], $datosAdicionales['fechaContrato'], $datosAdicionales['salario']);
-        } elseif ($tipoUsuario === 'admin') {
-            $this->modeloUs->actualizarAdmin($idUsuario, $datosAdicionales['estatus'], $datosAdicionales['observaciones']);
+            // Actualizar usuario
+            $this->modeloUs->actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario);
+
+            // Actualizar según el tipo
+            if ($tipoUsuario == 'cliente') {
+                $this->modeloUs->actualizarCliente($idUsuario, $datosAdicionales['credito'], $datosAdicionales['estatus']);
+            } elseif ($tipoUsuario == 'empleado') {
+                $this->modeloUs->actualizarEmpleado($idUsuario, $datosAdicionales['puesto'], $datosAdicionales['fechaContrato'], $datosAdicionales['salario']);
+            } elseif ($tipoUsuario == 'admin') {
+                $this->modeloUs->actualizarAdmin($idUsuario, $datosAdicionales['estatus'], $datosAdicionales['observaciones'], $datosAdicionales['fechaAlta'],);
+            }
+
+            return true;
+        } catch (Exception $e) {
+            throw $e;
         }
     }
+
 
     public function eliminarUsuario($idUsuario)
     {

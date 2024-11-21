@@ -89,7 +89,5 @@ class ModeloProductos {
         $row = $result->fetch_assoc();
         return $row['total'] > 0;
     }
-    
-    
 }
 ?>

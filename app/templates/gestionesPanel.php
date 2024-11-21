@@ -13,7 +13,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/css/menuOpciones2.css">
+    <link rel="stylesheet" href="../static/css/menuOpciones.css">
 </head>
 
 <body>
@@ -38,18 +38,18 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 
         <article class="entrada-blog">
             <div class="blog-contenido">
-                <img src="../static/img/descuentos.png" alt="Imagen Admin">
-                <h1>Gestión de descuentos</h1>
-            </div>
-            <a href="CRUDDescuentos.php">Empezar</a>
-        </article>
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
                 <img src="../static/img/empleados.png" alt="Imagen Blog 4">
                 <h1>Gestión de empleados</h1>
             </div>
             <a href="CRUDClientes.php">Empezar</a>
+        </article>
+
+        <article class="entrada-blog">
+            <div class="blog-contenido">
+                <img src="../static/img/descuentos.png" alt="Imagen Admin">
+                <h1>Gestión de descuentos</h1>
+            </div>
+            <a href="CRUDDescuentos.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
