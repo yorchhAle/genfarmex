@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Actualizar Descuento</title>
+        <title>Actualizar Producto - Genfarmex</title>
         <link rel="stylesheet" href="../static/css/update.css"> 
     </head>
     <body>
@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="descripcion">Descripción:</label>
             <input type='text' name='descripcion' value="<?php echo htmlspecialchars( $productoActual['descripcion'])?>" required>
             <label for="existencias">Existencias:</label>
-            <input type='text' name='existencias' value="<?php echo htmlspecialchars( $productoActual['existencias'])?>" required>
+            <input type='number' name='existencias' min="0" value="<?php echo htmlspecialchars( $productoActual['existencias'])?>" required>
             <label for="precio">Precio:</label>
-            <input type='text' name='precio'      value="<?php echo htmlspecialchars( $productoActual['precioUnitario'])?>" required>
+            <input type='number' name='precio' min="0" value="<?php echo htmlspecialchars( $productoActual['precioUnitario'])?>" required>
             <button type='submit' class="btn-submit">Actualizar Producto</button>
         </form>
     </div>

@@ -177,3 +177,43 @@ form button{
     margin-bottom: .3rem;
     font-weight: 300;
 }
+
+.wrapper{
+    width: 140px;
+    height: 30px;
+    background-color: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sub{
+    border-right: 1px solid #aaa;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.add{
+    border-left: 1px solid #aaa;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.value{
+    font-size: 22px;
+    font-weight: bold;
+
+}
+
+.card .anadir{
+    background-color: #00008b;
+    justify-content: space-evenly;
+    color: black;
+    align-items: center;
+    display: flex;
+}
+
+.tabla-pedido{
+    width: 80vh;
+    background-color: #00008b;
+}

@@ -24,12 +24,19 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <link rel="stylesheet" href="../static/css/catalogo.css"> <!-- Nuevo CSS minimalista -->
     <title>Catálogo de Productos</title>
+=======
+    <link rel="stylesheet" href="../static/css/inicio2.css">
+    
+    <title>Catalogo - Genfarmex</title>
+>>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
 </head>
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
 
+<<<<<<< HEAD
     <div class="container">
         <h1 class="title">Catálogo de Productos</h1>
 
@@ -43,6 +50,58 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
             </form>
             <a class="btn btn-back" href="CRUDProducto.php">Regresar</a>
         </div>
+=======
+    <div class="catalogo">
+    <?php 
+    foreach ($productos as $producto) {
+    ?>
+        <div class="card">
+            <p><bold>Clave:</bold> <?php echo htmlspecialchars($producto['clave']); ?></p>
+            <p><bold>Descripción:</bold> <?php echo htmlspecialchars($producto['descripcion']); ?></p>
+            <p><bold>Existencias:</bold> <?php echo htmlspecialchars($producto['existencias']); ?></p>
+            <p><bold>Precio:</bold> <?php echo htmlspecialchars(number_format($producto['precioUnitario'], 2)); ?></p>
+            <div class="wrapper" data-existencias="<?php echo htmlspecialchars($producto['existencias']); ?>">
+                <div class="sub">-</div>
+                <div class="value">0</div>
+                <div class="add">+</div>
+            </div>
+            <script>
+                (function() {
+                    const card = document.currentScript.closest(".card");
+                    const sub = card.querySelector(".sub");
+                    const value = card.querySelector(".value");
+                    const add = card.querySelector(".add");
+                    const maxExistencias = parseInt(card.querySelector(".wrapper").getAttribute("data-existencias"), 10);
+
+                    let totalValue = 0;
+                    value.innerHTML = totalValue;
+
+                    add.onclick = function() {
+                        if (totalValue < maxExistencias) {
+                            totalValue++;
+                            value.innerHTML = totalValue;
+                        } else {
+                            alert("No puedes agregar más de las existencias disponibles.");
+                        }
+                    };
+
+                    sub.onclick = function() {
+                        if (totalValue > 0) {
+                            totalValue--;
+                            value.innerHTML = totalValue;
+                        }
+                    };
+                })();
+            </script>
+            <a href="actualizarProducto.php?id=<?php echo $producto['id']; ?>">Actualizar</a>
+            <a href="eliminarProducto.php?id=<?php echo $producto['id']; ?>">Eliminar</a>
+        </div>
+    <?php
+    } 
+    ?>
+
+</div>
+>>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
 
         <div class="catalogo">
             <?php foreach ($productos as $producto): ?>

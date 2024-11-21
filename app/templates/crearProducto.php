@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $exis = $_POST['exis'];
     $pre = $_POST['pre'];
 
-    $productoController = new ProductoController();
+    $productoController = new ProductoController();     
     if ($productoController->crearProducto($clave, $desc, $exis, $pre)) {
         echo "<script>alert('Producto creado exitosamente.'); window.location.href='listarProducto.php';</script>";
     } else {

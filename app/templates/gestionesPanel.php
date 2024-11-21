@@ -2,7 +2,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
-    header("Location: inicioSesion.html");
+    header("Location: ../views/inicioSesion.html");
     exit;
 }
 ?> 

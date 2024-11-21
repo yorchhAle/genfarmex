@@ -18,8 +18,12 @@
             <li><a href="../templates/gestionesPanel.php">Gestiones</a></li>
             <li><a href="../templates/reportesPanel.php">Generar reportes</a></li>
             <li><a href="#">Generar consultas</a></li>
+<<<<<<< HEAD
             <li><a href="../templates/panel.php">Generar respaldo de BD</a></li>
             <li><a href="../templates/panel.php">Ir al panel principal</a></li>
+=======
+            <li><a href="../respaldos/index.php">Generar respaldo de BD</a></li>
+>>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
         </ul>
     </div>
 </body>

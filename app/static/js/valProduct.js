@@ -1,32 +1,36 @@
 function validateCProd() {
-    const clave = document.forms[0]["clave"].value;
-    const descripción = document.forms[0]["desc"].value;
-    const existencias = document.forms[0]["exis"].value;
-    const precio = document.forms[0]["pre"].value;
+    const clave = document.forms[0]["clave"].value.trim();
+    const descripción = document.forms[0]["desc"].value.trim();
+    const existencias = parseFloat(document.forms[0]["exis"].value);
+    const precio = parseFloat(document.forms[0]["pre"].value);
 
     // Validar que la clave no esté vacía
-    if (clave.trim() === "") {
+    if (!clave) {
         alert("Por favor, ingrese la clave del producto.");
         return false;
     }
 
-    // Validar que el producto no esté vacío
-    if (descripción.trim() === "") {
+    // Validar que la descripción no esté vacía
+    if (!descripción) {
         alert("Por favor, ingrese la descripción.");
         return false;
     }
 
-    // Validar que el número de inventario sea mayor a 0
+    // Validar existencias como número no negativo
     if (isNaN(existencias) || existencias < 0) {
-        alert("Ingrese un valor de existencia válido (número mayor o igual a 0).");
+        document.getElementById("aviExis").style.display = "block";
         return false;
+    } else {
+        document.getElementById("aviExis").style.display = "none";
     }
 
-    // Validar que el precio sea numérico
+    // Validar precio como número no negativo
     if (isNaN(precio) || precio < 0) {
-        alert("Ingrese un precio válido (mayor o igual a 0).");
+        document.getElementById("aviPre").style.display = "block";
         return false;
+    } else {
+        document.getElementById("aviPre").style.display = "none";
     }
 
-    return true; // Si todas las validaciones pasan
+    return true;
 }

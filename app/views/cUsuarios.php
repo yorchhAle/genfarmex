@@ -7,6 +7,10 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     exit;
 }
 ?>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
 <!DOCTYPE html>
 <html lang="es">
 
