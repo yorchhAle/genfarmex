@@ -1,20 +1,11 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
-<<<<<<< HEAD
-=======
-
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
 <?php 
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
-<<<<<<< HEAD
 ?> 
-=======
-?>
-
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,11 +17,8 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 </head>
 
 <body>
-<<<<<<< HEAD
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
     
-=======
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
     <div class="container">
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img">
@@ -47,16 +35,8 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
             <button class="back-button" onclick="history.back()">Regresar</button>
         </div>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
     <script defer src="../static/js/inicio.js"></script>
 </body>
 
 </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
 <?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->

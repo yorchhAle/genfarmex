@@ -55,6 +55,21 @@ class ModeloProductos {
         return $stmt->execute();
     }
 
+    public function reducirExistencias($id, $exis){
+        $sql = "UPDATE producto SET existencias = existencias - ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii",  $exis,  $id);
+        return $stmt->execute();
+    }
+
+    public function aumentarExistencias($id, $exis){
+        $sql = "UPDATE producto SET existencias = existencias + ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii",  $exis,  $id);
+        return $stmt->execute();
+    }
+
+
     // Eliminar un producto
     public function eliminarProducto($id) {
         $sql = "DELETE FROM producto WHERE id = ?";

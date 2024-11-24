@@ -17,7 +17,8 @@
         <ul>
             <li><a href="../templates/carrito.php">Ver carrito</a></li>
             <li><a href="../templates/catalogo.php">Ver catalogo</a></li>
-
+            <li><a href="../templates/actualizarClientePropio.php">Actualizar información</a></li>
+            <li><a href="../templates/verPedidosClie.php">Ver pedidos</a></li>
         </ul>
     </div>
 </body>

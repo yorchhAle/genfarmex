@@ -62,6 +62,55 @@ class ModeloPed {
         return $detalles;
     }
 
+    public function obtenerTodosPedClie($idUsuario) {
+        $sql = "SELECT * FROM pedido WHERE idcliente = ?";
+        $stmt = $this->conn->prepare($sql);
+
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $this->conn->error);
+        }
+        $stmt->bind_param("i",  $idUsuario);
+
+        if (!$stmt->execute()) {
+            die("Error al ejecutar la consulta: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+
+        if ($result === false) {
+            die("Error al obtener los resultados: " . $stmt->error);
+        }
+
+        $detalles = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        return $detalles;
+    }
+
+    public function obtenerTodosPed() {
+        $sql = "SELECT * FROM pedido";
+        $stmt = $this->conn->prepare($sql);
+
+        if ($stmt === false) {
+            die("Error en la preparación de la consulta: " . $this->conn->error);
+        }
+
+        if (!$stmt->execute()) {
+            die("Error al ejecutar la consulta: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+
+        if ($result === false) {
+            die("Error al obtener los resultados: " . $stmt->error);
+        }
+
+        $detalles = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        return $detalles;
+    }
+    
     //para obtener el pedido activo del cliente
     public function obtenerPedidoActivoPorCliente($idCliente) {
         $sql = "SELECT * FROM pedido WHERE idcliente = ? AND estado = 'activo' LIMIT 1";

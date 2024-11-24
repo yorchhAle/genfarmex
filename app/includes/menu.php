@@ -21,6 +21,7 @@
             <li><a href="../templates/panel.php">Generar respaldo de BD</a></li>
             <li><a href="../templates/panel.php">Ir al panel principal</a></li>
             <li><a href="../respaldos/index.php">Generar respaldo de BD</a></li>
+            <li><a href="../templates/verTPeds.php">Ver todos los pedidos</a></li>
         </ul>
     </div>
 </body>

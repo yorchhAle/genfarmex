@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '../../../config/db.php';
+require_once '../models/modeloProductos.php';
 
 class ModeloDetPed {
     private $conn;
@@ -57,15 +58,10 @@ class ModeloDetPed {
         // Convertimos los resultados a un arreglo asociativo
         $detalles = $result->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
-    
-        // Depuración
-        if (empty($detalles)) {
-            echo "No hay detalles para este pedido.";
-        } 
-    
         return $detalles;
     }
-
+    
+    //obtener el detalle por id
     public function obtenerDetPedPorID($idDetPed){
         $sql = "Select * from detallepedido WHERE iddetallePedido = ?";
         $stmt = $this->conn->prepare($sql);
@@ -93,7 +89,6 @@ class ModeloDetPed {
         
         return $detalles;
     }
-    
 
     // Actualizar un detallePedido
     public function actualizarDetPed($iddetallepedido, $cantidad,$idProd) {
@@ -204,5 +199,6 @@ class ModeloDetPed {
     
         $stmt->close();
     }
+    
 }
 ?>
