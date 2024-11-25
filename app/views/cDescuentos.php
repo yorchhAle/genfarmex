@@ -1,11 +1,23 @@
+<<<<<<< HEAD
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 <?php 
+=======
+<?php
+>>>>>>> b8abc8242745b729ee0e02b3a5e32c34c67609f0
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
+<<<<<<< HEAD
 ?> 
+=======
+?>
+<?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
+
+
+
+>>>>>>> b8abc8242745b729ee0e02b3a5e32c34c67609f0
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +30,10 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
+<<<<<<< HEAD
     
+=======
+>>>>>>> b8abc8242745b729ee0e02b3a5e32c34c67609f0
     <div class="container">
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img">

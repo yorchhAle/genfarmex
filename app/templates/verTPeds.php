@@ -8,6 +8,7 @@ $modeloPedido = new ModeloPed();
 $modeloUs = new ModeloUs();
 $modeloDetPed = new ModeloDetPed();
 
+$filtro = isset($_GET['filtro']) ? $_GET['filtro'] : "";
 ?>
 
 <?php 
@@ -31,9 +32,17 @@ if (!isset($_SESSION['tipoUsuario']) || ($_SESSION['tipoUsuario'] !== 'empleado'
 <body>
 <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
     <?php 
-        $pedidos = $modeloPedido->obtenerTodosPed();
+        $pedidos = $modeloPedido->obtenerTodosPed($filtro);
     ?>
-    
+    <div class="search-bar">
+            <form method="get" action="">
+                <input class="input-search" type="text" name="filtro" placeholder="Buscar Cliente..." value="<?php echo htmlspecialchars($filtro); ?>">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </form>
+            <form method="get" action="">
+                <button class="btn btn-secondary" type="submit">Mostrar todos</button>
+            </form>
+        </div>
     <div class="pedidos-container">
     <h2>Todos los Pedidos</h2>
     <?php 

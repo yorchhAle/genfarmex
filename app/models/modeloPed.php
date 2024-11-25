@@ -87,9 +87,19 @@ class ModeloPed {
         return $detalles;
     }
 
-    public function obtenerTodosPed() {
-        $sql = "SELECT * FROM pedido";
-        $stmt = $this->conn->prepare($sql);
+    public function obtenerTodosPed($filtro) {
+        if(!empty($filtro)){
+            $sql = "SELECT * FROM pedido WHERE pedido.idcliente = 
+            (SELECT clientes.idcliente FROM clientes INNER JOIN usuarios 
+            ON clientes.idusuario = usuarios.idusuario WHERE usuarios.nombre = ?)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("s", $filtro);
+
+            
+        }else{
+            $sql = "SELECT * FROM pedido";
+            $stmt = $this->conn->prepare($sql);
+        }
 
         if ($stmt === false) {
             die("Error en la preparación de la consulta: " . $this->conn->error);
