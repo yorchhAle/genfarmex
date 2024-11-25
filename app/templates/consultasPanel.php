@@ -17,25 +17,25 @@
         <article class="entrada-blog">
             <div class="blog-contenido">
                 <img src="../static/img/cliente.png" alt="Imagen Admin">
-                <h1>Reporte de clientes</h1>
+                <h1>Consulta de domicilios</h1>
             </div>
-            <a href="reporteClientes.php">Generar</a>
+            <a href="../views/consultaDomicilios.php">Generar</a>
         </article>
 
         <article class="entrada-blog">
             <div class="blog-contenido">
                 <img src="../static/img/empleados.png" alt="Imagen Blog 4">
-                <h1>Reporte de empleados</h1>
+                <h1>Consulta de clientes</h1>
             </div>
-            <a href="reporteEmpleados.php">Generar</a>
+            <a href="../views/consultaClientes.php">Generar</a>
         </article>
 
         <article class="entrada-blog">
             <div class="blog-contenido">
                 <img src="../static/img/producto.png" alt="Imagen Blog 4">
-                <h1>Reporte de productos</h1>
+                <h1>consulta de almacen</h1>
             </div>
-            <a href="reporteProductos.php">Generar</a>
+            <a href="listarProducto.php">Generar</a>
         </article>
 
         <article class="entrada-blog">

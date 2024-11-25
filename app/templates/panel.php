@@ -13,13 +13,23 @@ include '../includes/header.php'; // Incluir el encabezado
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Panel de Administración</title>
     <link rel="stylesheet" href="../static/css/menuOpciones.css">
 </head>
 
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
 
+    <!-- Mensaje de bienvenida al principio de la página -->
+    <div class="mensaje-bienvenida">
+        <?php
+        if (isset($_SESSION['usuario']) && isset($_SESSION['tipoUsuario'])) {
+            echo "<h2>Bienvenido, " . htmlspecialchars($_SESSION['usuario']) . ". Ingreso como un " . htmlspecialchars($_SESSION['tipoUsuario']) . ".</h2>";
+        }
+        ?>
+    </div>
+
+    <!-- Contenido de la página -->
     <div class="contenedor cuatro-columnas">
         <article class="entrada-blog">
             <div class="blog-contenido">
@@ -42,18 +52,17 @@ include '../includes/header.php'; // Incluir el encabezado
                 <img src="../static/img/descuentos.png" alt="Imagen Admin">
                 <h1>Generar consultas</h1>
             </div>
-            <a href="#">Empezar</a>
+            <a href="consultasPanel.php">Empezar</a>
         </article>
 
         <article class="entrada-blog">
-    <div class="blog-contenido">
-        <img src="../static/img/producto.png" alt="Imagen Blog 4">
-        <h1>Generar respaldo</h1>
+            <div class="blog-contenido">
+                <img src="../static/img/producto.png" alt="Imagen Blog 4">
+                <h1>Generar respaldo</h1>
+            </div>
+            <a href="../../respaldos/index.php">Empezar</a>
+        </article>
     </div>
-    <a href="../../respaldos/index.php">Empezar</a>
-</article>
-    </div>
-
 </body>
 
 </html>

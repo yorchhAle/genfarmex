@@ -19,7 +19,6 @@ include '../includes/header.php'; // Incluir el encabezado
 </head>
 <body>
 <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-<br><br><br><br>
 
 <div class="container">
     <div class="form-card mx-auto col-md-6">

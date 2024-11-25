@@ -13,7 +13,7 @@ header('Content-Disposition: attachment; filename=reporte.xls');
             <td>CONTRASEÑA</td>
         </tr>
     </thead>
-    <?php
+    <?php   
     $consulta = "SELECT id, usuario,contrasena from usuarios;";
     $result = mysqli_query($conn, $consulta);
     while ($row = mysqli_fetch_array($result)) { ?>

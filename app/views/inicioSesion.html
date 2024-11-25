@@ -1,47 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
+<!-- El uso de <!DOCTYPE html> indica que se utiliza HTML5. El atributo lang="es" define el idioma como español, mejorando la accesibilidad. -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- Define la codificación de caracteres como UTF-8, lo que asegura compatibilidad con varios idiomas. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Proporciona un diseño responsive ajustado al dispositivo del usuario. -->
     <title>Iniciar Sesión - Genfarmex</title>
+    <!-- Título que aparece en la pestaña del navegador. -->
     <link rel="stylesheet" href="../static/css/inicio.css">
-
+    <!-- Vincula un archivo CSS personalizado para estilos específicos de la página. -->
 </head>
 
 <body>
     <header class="header">
+        <!-- Sección del encabezado con un logo y un menú de navegación. -->
         <div class="logo">
             <img src="../static/img/LogoPrincipal.png" alt="Genfarmex Logo">
+            <!-- Muestra el logo principal. El atributo alt mejora la accesibilidad. -->
         </div>
         <nav class="navbar">
+            <!-- Barra de navegación con enlaces (actualmente sin destino definido). -->
             <a href="#">Información</a>
             <a href="#">Ubicación</a>
             <a href="#">Contactos</a>
         </nav>
     </header>
+
     <div class="container">
+        <!-- Contenedor principal que organiza el contenido de la página. -->
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img">
+            <!-- Segundo logo con estilo definido por la clase "logo-img". -->
         </div>
         <div class="login-box">
+            <!-- Caja de inicio de sesión con título y formulario. -->
             <h2>Iniciar sesión</h2>
             <form id="loginForm" action="../templates/inico.php" method="POST">
+                <!-- Formulario que envía datos a un archivo PHP mediante POST. -->
                 <input type="text" name="usuario" placeholder="Usuario" required>
+                <!-- Campo obligatorio para el nombre de usuario. -->
                 <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <!-- Campo obligatorio para la contraseña. -->
                 <div class="button-group">
+                    <!-- Botones agrupados para regresar o enviar el formulario. -->
                     <button class="btn-back" onclick="window.location.href='../index.html'">Regresar</button>
+                    <!-- Botón que redirige a la página principal. -->
                     <button type="submit" class="btn-login">Ingresar</button>
+                    <!-- Botón que envía los datos del formulario. -->
                 </div>
             </form>
         </div>
-
     </div>
+
     <footer>
+        <!-- Pie de página con derechos reservados y enlace al aviso de privacidad. -->
         <p>Copyright © 2022 Genfarmex - Todos los derechos reservados.</p>
         <a href="#">Aviso de Privacidad</a>
     </footer>
+
     <script defer src="../static/js/inicio.js"></script>
+    <!-- Archivo JavaScript externo que se ejecuta al final del proceso de carga. -->
 </body>
 
 </html>

@@ -20,6 +20,12 @@ if (!$conn) {
 $query = "SELECT id, clave, descripcion, existencias, precioUnitario FROM producto;";
 $resultado = mysqli_query($conn, $query);
 
+// Consulta SQL para contar la cantidad total de productos
+$countQuery = "SELECT COUNT(*) as total FROM producto;";
+$countResult = mysqli_query($conn, $countQuery);
+$countRow = mysqli_fetch_assoc($countResult);
+$totalProductos = $countRow['total']; // Cantidad total de productos
+
 // Crear el PDF
 $pdf = new PDF('P', 'mm', 'Letter');
 $pdf->AliasNbPages();
@@ -54,10 +60,15 @@ while ($row = mysqli_fetch_array($resultado)) {
     $pdf->Cell($widths[1], 10, utf8_decode($row['clave']), 1, 0, 'C', $fill);
     $pdf->Cell($widths[2], 10, utf8_decode($row['descripcion']), 1, 0, 'C', $fill);
     $pdf->Cell($widths[3], 10, $row['existencias'], 1, 0, 'C', $fill);
-    $pdf->Cell($widths[5], 10, '$' . number_format($row['precioUnitario'], 2), 1, 0, 'C', $fill);
+    $pdf->Cell($widths[4], 10, '$' . number_format($row['precioUnitario'], 2), 1, 0, 'C', $fill);
     $pdf->Ln();
     $fill = !$fill; // Alternar color de fondo
 }
+
+// Agregar el conteo total al final
+$pdf->Ln(5);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, "Cantidad total de productos: $totalProductos", 0, 1, 'C');
 
 // Salida del PDF
 $pdf->Output();

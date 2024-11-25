@@ -31,6 +31,16 @@ if (!empty($conditions)) {
     $query .= " WHERE " . implode(" AND ", $conditions);  // Asegúrate de usar 'WHERE' solo una vez y 'AND' para condiciones múltiples
 }
 
+// Consulta para contar el total de productos filtrados
+$countQuery = "SELECT COUNT(*) as total FROM producto";
+if (!empty($conditions)) {
+    $countQuery .= " WHERE " . implode(" AND ", $conditions);
+}
+
+$countResult = mysqli_query($conn, $countQuery);
+$countRow = mysqli_fetch_assoc($countResult);
+$totalProductos = $countRow['total'];  // Número total de productos filtrados
+
 $resultado = mysqli_query($conn, $query);
 
 // Crear el PDF
@@ -42,7 +52,19 @@ $pdf->SetFont('Arial', 'B', 14);
 // Título del Reporte
 $pdf->SetFillColor(38, 120, 178); // Azul oscuro
 $pdf->SetTextColor(255, 255, 255); // Blanco
-$pdf->Cell(0, 10, 'Reporte de Productos filtrado', 0, 1, 'C', true);
+$pdf->Cell(0, 10, 'Reporte de Productos Filtrado', 0, 1, 'C', true);
+$pdf->Ln(5);
+
+// Mostrar el total de productos filtrados
+$pdf->SetFont('Arial', 'I', 12);
+// Cambiar el color del texto (rojo en este caso)
+$pdf->SetTextColor(255, 0, 0);  // Color rojo
+
+// Mostrar el total de productos filtrados
+$pdf->Cell(0, 10, "Total de productos encontrados por filtro: $totalProductos", 0, 1, 'C');
+
+// Volver al color de texto por defecto (negro en este caso)
+$pdf->SetTextColor(0, 0, 0);  // Color negro
 $pdf->Ln(5);
 
 // Encabezados de la tabla

@@ -1,10 +1,12 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 
 <?php
-require_once '../controllers/controladorUs.php';
-$clienteController = new UsController();
+require_once '../controllers/controladorUs.php'; // Incluir el controlador de usuario
+$clienteController = new UsController(); // Crear una instancia del controlador de usuario
 
+// Verificar si la solicitud es un POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener los datos enviados desde el formulario
     $idUsuario = $_POST['idUsuario'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -15,21 +17,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $direccion = $_POST['direccion'];
     $tipoUsuario = $_POST['tipoUsuario'];
 
+    // Llamar al método para actualizar el usuario en la base de datos
     $resultado = $clienteController->actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario, [
-        'fechaAlta' => $fechaAlta,
+        'fechaAlta' => $fechaAlta, // Se está pasando una fecha que debería estar definida
     ]);
 
-    // Actualizar el cliente
+    // Mostrar un mensaje dependiendo si la actualización fue exitosa o falló
     if ($resultado) {
         echo "<script>alert('Cliente actualizado exitosamente.'); window.location.href='listarAdmins.php';</script>";
     } else {
-        echo "<script>alert('Error al actualizar el cliente.'); window.location.href='listarAdmins.php';</script>";
+        echo "<script>alert('Error al actualizar el admin.'); window.location.href='listarAdmins.php';</script>";
     }
 } else {
-    // Obtener ID del cliente desde GET
+    // Si no es un POST, obtener el ID del admin desde la URL
     $idAdmin = $_GET['id'];
-    $AdminActual = $clienteController->obtenerUsuarios($idAdmin);
+    $AdminActual = $clienteController->obtenerUsuarios($idAdmin); // Obtener los datos del admin
 
+    // Verificar si se encontró el admin
     if ($AdminActual) {
 ?>
         <!DOCTYPE html>
@@ -39,22 +43,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Actualizar Cliente</title>
-            <link rel="stylesheet" href="../static/css/update.css">
+            <link rel="stylesheet" href="../static/css/update.css"> <!-- Incluir la hoja de estilos -->
         </head>
 
         <body>
             <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
+
             <?php
-            $idAdmin = $_GET['id'];
+            $idAdmin = $_GET['id']; // Obtener el ID del admin
             if ($AdminActual) {
             ?>
                 <h2 align="center">Actualizar Cliente</h2>
                 <div class="form-container">
+                    <!-- Formulario para actualizar los datos del admin -->
                     <form action="actualizarAdmis.php" method="POST" onsubmit="return confirmarActualizacion();">
 
                         <!-- Campo oculto para el idUsuario -->
                         <input type="hidden" name="idUsuario" value="<?php echo htmlspecialchars($idAdmin); ?>">
 
+                        <!-- Campos del formulario para actualizar los datos del admin -->
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($AdminActual['nombre']); ?>" required>
 
@@ -78,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <label for="tipoUsuario">Tipo de Usuario:</label>
                         <select name="tipoUsuario" id="tipoUsuario" required>
+                            <!-- Valor por defecto "admin" para el tipo de usuario -->
                             <option value="admin" <?php echo (isset($AdminActual['tipoUsuario']) && $AdminActual['tipoUsuario'] == 'admin') ? 'selected' : ''; ?>>Admin</option>
                         </select>
                         <button type="submit" class="btn-submit">Actualizar admin</button>
@@ -85,13 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <script>
+                    // Función de confirmación antes de enviar el formulario
                     function confirmarActualizacion() {
                         return confirm("¿Estás seguro de que deseas actualizar los datos de este Admin?");
                     }
                 </script>
             <?php
             } else {
-                echo "<p>No se encontró el admin.</p>";
+                echo "<p>No se encontró el admin.</p>"; // Si no se encuentra el admin en la base de datos
             }
             ?>
         </body>
@@ -99,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </html>
 <?php
     } else {
-        echo "<p>No se encontró el admin.</p>";
+        echo "<p>No se encontró el admin.</p>"; // Si no se encuentra el admin
     }
 }
 ?>

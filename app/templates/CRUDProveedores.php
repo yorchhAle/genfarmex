@@ -29,28 +29,6 @@
             </div>
             <a href="listarProveedores.php">Empezar</a>
         </article>
-<<<<<<< HEAD
-=======
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
-                <img src="../static/img/actualizar.png" alt="Imagen Admin">
-                <h1>Actualizar</h1>
-            </div>
-
-            <a href="eliminarActProve.php">Empezar</a>
-
-        </article>
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
-                <img src="../static/img/eliminar.png" alt="Imagen Blog 4">
-                <h1>Eliminar</h1>
-            </div>
-
-            <a href="eliminarActProve.php">Empezar</a>
-        </article>
->>>>>>> 36167dfa535c78088b875c03b15f29834aeebeee
     </div>
     <button class="back-button" ><a href="gestionesPanel.php" style="color:white"  >Regresar</a></button>
 </body>

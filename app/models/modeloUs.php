@@ -5,7 +5,8 @@ class ModeloUs
 {
     private $conn;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->conn = getConnection();
     }
 
@@ -22,36 +23,39 @@ class ModeloUs
     }
 
     public function obtenerEmpleadosConDatos()
-{
-    $query = "
+    {
+        $query = "
         SELECT 
             u.idusuario, u.nombre, u.apellido, u.usuario, u.correo, u.telefono, u.direccion, u.tipoUsuario, 
             e.rol, e.fechaContratacion, e.sueldo
         FROM usuarios u
         INNER JOIN empleados e ON u.idusuario = e.idusuario
     ";
-    $result = $this->conn->query($query);
-    return $result->fetch_all(MYSQLI_ASSOC);
-}
+        $result = $this->conn->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     // Leer todos los usuario
-    public function obtenerUsuarios(){
+    public function obtenerUsuarios()
+    {
         $sql = "SELECT * FROM usuarios";
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     // Actualizar un usuario
-    public function actualizarUs($id, $nombre, $apellido, $usuario, $pass,  $correo, $telefono, $direccion, $tipoUsuario){
+    public function actualizarUs($id, $nombre, $apellido, $usuario, $pass,  $correo, $telefono, $direccion, $tipoUsuario)
+    {
         $sql = "UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, pass = ?,correo = ?, telefono = ?, direccion = ?, tipoUsuario = ? WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sssssssi", $nombre, $apellido, $usuario, $pass, $correo, $telefono, $direccion, $tipoUsuario, $id);
         return $stmt->execute();
     }
-    
+
 
     // Eliminar un usuario
-    public function eliminarUs($id){
+    public function eliminarUs($id)
+    {
         $sql = "DELETE FROM usuarios WHERE idusuario = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $id);
@@ -66,25 +70,28 @@ class ModeloUs
         return $result->fetch_assoc();
     }
 
-    public function obtenerUsuarioPorCorreo($correo){
+    public function obtenerUsuarioPorCorreo($correo)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE correo = ?");
         $stmt->bind_param("s", $correo);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
-    
-    public function obtenerUsuarioPorTelefono($telefono){
+
+    public function obtenerUsuarioPorTelefono($telefono)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE telefono = ?");
         $stmt->bind_param("s", $telefono);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
 
-    public function crearCliente($idUsuario, $credito, $estatus, $fechaCreacion) {
+    public function crearCliente($idUsuario, $credito, $estatus, $fechaCreacion)
+    {
         $query = "INSERT INTO clientes (idusuario, creditoC, estatusC, fechaRegistro) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("isss", $idUsuario, $credito, $estatus, $fechaCreacion);
-    
+
         if ($stmt->execute()) {
             return true;
         } else {
@@ -92,20 +99,23 @@ class ModeloUs
             return false;
         }
     }
-    
-    public function obtenerUsuariosC(){
+
+    public function obtenerUsuariosC()
+    {
         $sql = "SELECT * FROM clientes";
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function obtenerUsuariosA(){
+    public function obtenerUsuariosA()
+    {
         $sql = "SELECT * FROM administradores";
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function obtenerUsuariosConDatosAdicionales(){
+    public function obtenerUsuariosConDatosAdicionales()
+    {
         $query = "
             SELECT u.*, c.creditoC, c.estatusC AS estatus_cliente, e.rol, e.fechaContratacion, e.sueldo, a.estatus AS estatus_admin, a.fechaAlta AS fechaAlta, a.observaciones
             FROM usuarios u
@@ -117,7 +127,8 @@ class ModeloUs
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function obtenerClienteConUsuario($idUsuario){
+    public function obtenerClienteConUsuario($idUsuario)
+    {
         $query = "
             SELECT u.nombre, u.apellido, u.usuario, u.pass, u.correo, u.telefono, u.direccion, c.creditoC, c.estatusC, c.fechaRegistro, c.idusuario
             FROM usuarios u LEFT JOIN clientes c ON u.idusuario = c.idusuario
@@ -129,7 +140,8 @@ class ModeloUs
         return $stmt->get_result()->fetch_assoc();
     }
 
-    public function obtenerAdminConUsuario($idUsuario){
+    public function obtenerAdminConUsuario($idUsuario)
+    {
         $query = "
             SELECT u.nombre, u.apellido, u.usuario, u.pass, u.correo, u.telefono, u.direccion, a.fechaAlta, a.estatus, a.observaciones, a.idusuario
             FROM usuarios u LEFT JOIN administradores a ON u.idusuario = a.idusuario
@@ -145,12 +157,13 @@ class ModeloUs
     public function crearEmpleado($usuarioId, $puesto, $fechaContrato, $salario)
     {
         $stmt = $this->conn->prepare("INSERT INTO empleados (rol, fechaContratacion, sueldo,idusuario) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $puesto, $fechaContrato, $salario, $usuarioId);
+        $stmt->bind_param("ssss", $puesto, $fechaContrato, $salario, $usuarioId);
         return $stmt->execute();
     }
 
     // Método para admin
-    public function crearAdmin($usuarioId, $fechaContrato, $estatus, $observaciones){
+    public function crearAdmin($usuarioId, $fechaContrato, $estatus, $observaciones)
+    {
         // Asegúrate de que la fecha esté en el formato correcto
         $fechaContrato = date('Y-m-d', strtotime($fechaContrato));
         $stmt = $this->conn->prepare("INSERT INTO administradores (fechaAlta, estatus, observaciones, idusuario) VALUES (?, ?, ?, ?)");
@@ -158,19 +171,22 @@ class ModeloUs
         return $stmt->execute();
     }
 
-    public function obtenerUsuarioPorID($idUsuario){
+    public function obtenerUsuarioPorID($idUsuario)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE idusuario = ?");
         $stmt->bind_param("i", $idUsuario);
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
 
-    public function actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario){
-        $stmt = $this->conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, pass = ?, correo = ?, telefono = ?, direccion = ?, tipoUsuario = ? WHERE idusuario = ?");
-        $stmt->bind_param("ssssssssi", $nombre, $apellido, $usuario, $contrasena, $email, $telefono, $direccion, $tipoUsuario, $idUsuario);
+    public function actualizarUsuario($idUsuario, $nombre, $apellido, $usuario, $email, $telefono, $direccion, $tipoUsuario)
+    {
+        $stmt = $this->conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ?, correo = ?, telefono = ?, direccion = ?, tipoUsuario = ? WHERE idusuario = ?");
+        $stmt->bind_param("sssssssi", $nombre, $apellido, $usuario, $email, $telefono, $direccion, $tipoUsuario, $idUsuario);
         $stmt->execute();
     }
-    public function actualizarCliente($idUsuario, $credito, $estatus) {
+    public function actualizarCliente($idUsuario, $credito, $estatus)
+    {
         $query = "UPDATE clientes SET creditoC = ?, estatusC = ? WHERE idusuario = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("ssi", $credito, $estatus, $idUsuario);
@@ -181,21 +197,49 @@ class ModeloUs
             return false;
         }
     }
-    
+
     // Actualización para empleados y administradores
-    public function actualizarEmpleado($idUsuario, $rol, $fechaContrato, $sueldo){
+    public function actualizarEmpleado($idUsuario, $rol, $fechaContrato, $sueldo)
+    {
         $stmt = $this->conn->prepare("UPDATE empleados SET rol = ?, fechaContratacion = ?, sueldo = ? WHERE idusuario = ?");
         $stmt->bind_param("ssdi", $rol, $fechaContrato, $sueldo, $idUsuario);
         return $stmt->execute();
     }
 
-    public function actualizarAdmin($idUsuario, $estatus, $observaciones,$fechaAlta){
-        $stmt = $this->conn->prepare("UPDATE administradores SET estatus = ?, observaciones = ?, fechaAlta = ? WHERE idusuario = ?");
-        $stmt->bind_param("sssi", $estatus, $observaciones,$fechaAlta ,$idUsuario);
-        return $stmt->execute();
+    public function obtenerClientesPorEstatus($estatus)
+    {
+        $query = "
+            SELECT u.nombre, u.apellido, u.correo, u.telefono, c.creditoC, c.estatusC
+            FROM usuarios u
+            INNER JOIN clientes c ON u.idusuario = c.idusuario
+            WHERE c.estatusC = ?
+        ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("s", $estatus);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function obtenerUsuariosPorDireccion($direccion)
+    {
+        $query = "
+        SELECT nombre, apellido, correo, telefono, tipoUsuario
+        FROM usuarios 
+        WHERE direccion LIKE CONCAT('%', ?, '%')
+    ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("s", $direccion);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
+    public function actualizarAdmin($idUsuario, $estatus, $observaciones, $fechaAlta)
+    {
+        $stmt = $this->conn->prepare("UPDATE administradores SET estatus = ?, observaciones = ?, fechaAlta = ? WHERE idusuario = ?");
+        $stmt->bind_param("sssi", $estatus, $observaciones, $fechaAlta, $idUsuario);
+        return $stmt->execute();
+    }
 
     public function eliminarUsuarioConDatos($idUsuario)
     {
