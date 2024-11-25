@@ -57,7 +57,7 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
                 <img src="../static/img/descuentos.png" alt="Imagen Admin">
                 <h1>Reporte de ventas</h1>
             </div>
-            <a href="#">Generar</a>
+            <a href="reporteVentas.php">Generar</a>
         </article>
     </div>
 
