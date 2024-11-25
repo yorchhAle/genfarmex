@@ -37,22 +37,6 @@
             </div>
             <a href="listarProducto.php">Generar</a>
         </article>
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
-                <img src="../static/img/proveedor.png" alt="Imagen Blog 4">
-                <h1>Reporte de proveedores</h1>
-            </div>
-            <a href="reporteProveedores.php">Generar</a>
-        </article>
-
-        <article class="entrada-blog">
-            <div class="blog-contenido">
-                <img src="../static/img/descuentos.png" alt="Imagen Admin">
-                <h1>Reporte de ventas</h1>
-            </div>
-            <a href="#">Generar</a>
-        </article>
     </div>
 
 </body>

@@ -127,6 +127,19 @@ class ModeloUs
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function obtenerUsuariosConDatosAdicionalesA()
+    {
+        $query = "
+            SELECT u.*, c.creditoC, c.estatusC AS estatus_cliente, e.rol, e.fechaContratacion, e.sueldo, a.estatus AS estatus_admin, a.fechaAlta AS fechaAlta, a.observaciones
+            FROM usuarios u
+            LEFT JOIN clientes c ON u.idusuario = c.idusuario
+            LEFT JOIN empleados e ON u.idusuario = e.idusuario
+            LEFT JOIN administradores a ON u.idusuario = a.idusuario
+        ";
+        $result = $this->conn->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function obtenerClienteConUsuario($idUsuario)
     {
         $query = "
@@ -233,13 +246,34 @@ class ModeloUs
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
+    public function listarAdmins() {
+        // Aquí se debe definir el orden que deseas. Por ejemplo, ordenando por 'idusuario'.
+        $query = "SELECT * FROM usuarios WHERE tipoUsuario = 'admin' ORDER BY idusuario ASC"; // Puedes cambiar 'idusuario' por otro campo si lo prefieres.
+        $result = $this->conn->query($query);
+        
+        // Devolver los resultados en un array.
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function actualizarAdmin($idUsuario, $estatus, $observaciones, $fechaAlta)
-    {
-        $stmt = $this->conn->prepare("UPDATE administradores SET estatus = ?, observaciones = ?, fechaAlta = ? WHERE idusuario = ?");
-        $stmt->bind_param("sssi", $estatus, $observaciones, $fechaAlta, $idUsuario);
-        return $stmt->execute();
+{
+    // Aseguramos que el SQL esté bien formado
+    $stmt = $this->conn->prepare("UPDATE administradores SET estatus = ?, observaciones = ?, fechaAlta = ? WHERE idusuario = ?");
+    $stmt->bind_param("sssi", $estatus, $observaciones, $fechaAlta, $idUsuario);
+    
+    // Ejecutamos la consulta
+    if ($stmt->execute()) {
+        // Verificamos si se afectó alguna fila
+        if ($stmt->affected_rows > 0) {
+            echo "Actualización exitosa.";
+        } else {
+            echo "No se encontró el administrador o no se hizo ningún cambio.";
+        }
+    } else {
+        echo "Error en la actualización: " . $stmt->error;
     }
+}
 
     public function eliminarUsuarioConDatos($idUsuario)
     {

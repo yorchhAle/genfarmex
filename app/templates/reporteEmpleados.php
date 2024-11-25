@@ -3,9 +3,9 @@
 session_start();
 
 // Verificar si el usuario tiene permisos de administrador
-if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
-    header("Location: inicioSesion.html"); // Redirigir a la página de inicio de sesión si no es administrador
-    exit; // Detener la ejecución del script
+if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin' && $_SESSION['tipoUsuario'] !== 'empleado'){
+    header("Location: inicioSesion.html");
+    exit;
 }
 
 // Incluir el encabezado común del proyecto

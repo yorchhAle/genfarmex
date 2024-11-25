@@ -60,7 +60,7 @@ include '../includes/header.php'; // Incluir el encabezado
                 <img src="../static/img/producto.png" alt="Imagen Blog 4">
                 <h1>Generar respaldo</h1>
             </div>
-            <a href="../../respaldos/index.php">Empezar</a>
+            <a href="../respaldos/index.php">Empezar</a>
         </article>
     </div>
 </body>

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin'){
+if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin' && $_SESSION['tipoUsuario'] !== 'empleado'){
     header("Location: inicioSesion.html");
     exit;
 }

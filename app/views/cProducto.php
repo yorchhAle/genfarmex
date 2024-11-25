@@ -1,8 +1,4 @@
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
-<<<<<<< HEAD
-
-=======
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
 <?php
 session_start(); // Iniciar la sesión
 
@@ -21,28 +17,18 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Producto - Genfarmex</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../static/css/create.css"> <!-- Estilo CSS para la página -->
-=======
     <link rel="stylesheet" href="../static/css/create.css">
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
 
 </head>
 
 <body>
-<<<<<<< HEAD
-    <?php include '../includes/menu.php'; ?> <!-- Incluir el menú de navegación -->
-
-=======
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
     <div class="container">
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img"> <!-- Mostrar el logo -->
         </div>
         <div class="login-box"> <!-- Caja de formulario para crear un producto -->
             <h2>Crear Producto</h2>
-<<<<<<< HEAD
             <form action="../templates/crearProducto.php" method="POST"> <!-- Formulario que envía los datos a crearProducto.php -->
                 <!-- Campo para la clave del producto -->
                 <input type="text" name="clave" id="clave" placeholder="Clave del Producto" required>
@@ -76,23 +62,3 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     <script defer src="../../static/js/valProduct.js"></script>
 </body>
 </html>
-=======
-            <form action="../templates/crearProducto.php" method="POST">
-                <input type="text" name="clave" placeholder="Clave del Producto" required>
-                <input type="text" name="desc" placeholder="Descripción" required>
-                <input type="text" name="exis" placeholder="Existencia"
-                    onkeypress="if((event.keyCode < 48) || (event.keyCode >57)){event.returnValue=false;}" required>
-                <input type="text" name="pre" placeholder="Precio"
-                    onkeypress="if((event.keyCode < 48) || (event.keyCode >57)){event.returnValue=false;}" required>
-                <button type="submit">Crear Producto</button>
-                <button class="back-button" onclick="history.back()">Regresar</button>
-            </form>
-        </div>
-
-    </div>
-    <script defer src="../../static/js/valProduct.js"></script>
-</body>
-
-</html>
-<?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a

@@ -24,7 +24,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
         // Llamar al método para actualizar el proveedor en la base de datos
         $actualizacionExitosa = $proveedorController->actualizarProveedor($idProveedor, $nombre, $contacto, $telefono, $email, $direccion);
-        
+
         // Mostrar mensaje de éxito o error dependiendo de la actualización
         if ($actualizacionExitosa) {
             $mensaje = "Proveedor actualizado correctamente.";
@@ -52,12 +52,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Proveedor</title>
     <link rel="stylesheet" href="../static/css/update.css"> <!-- Estilo para la página de actualización -->
 </head>
+
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú de navegación -->
 
@@ -67,7 +69,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <?php if ($proveedor): ?> <!-- Verificar si el proveedor fue encontrado -->
             <!-- Formulario para actualizar los datos del proveedor -->
             <form method="POST" action="actualizarProveedor.php?id=<?php echo $idProveedor; ?>"> <!-- El ID se pasa en la URL -->
-                
+
                 <!-- Campo para el nombre del proveedor -->
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($proveedor['nombreP']); ?>" required>
@@ -97,6 +99,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <?php endif; ?>
     </div>
 </body>
+
 </html>
 
 <?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->

@@ -85,7 +85,7 @@ if (isset($_GET['id']) && isset($_GET['cantidad'])) {
     $conn = getConnection();
     $query = "update producto set existencias = existencias - ? where id = ?";
     $query = $conn->prepare($query);
-    $query->bind_param("ii",$cantidad, $idProducto);
+    $query->bind_param("ii", $cantidad, $idProducto);
     $query->execute();
 
 
@@ -93,5 +93,3 @@ if (isset($_GET['id']) && isset($_GET['cantidad'])) {
 }
 
 // Mostrar los detalles del carrito
-
-?>
