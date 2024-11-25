@@ -268,4 +268,37 @@ class ModeloUs
             return false;
         }
     }
+
+    public function nombreCliente($idUsuario){
+        $sql = "select usuarios.nombre from usuarios inner join clientes on usuarios.idusuario = clientes.idusuario where clientes.idusuario = ?;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $idUsuario);
+
+    if (!$stmt->execute()) {
+        throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
+    }
+
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+
+    return $row['nombre'] ?? false; // Retorna el nombre o false si no existe
+    }
+
+    public function idClieAUs($idCliente){
+        $sql = "SELECT idUsuario from clientes where idcliente = ?";
+        $stmt  = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $idCliente);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
+        }
+    
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+    
+        return $row['idUsuario'] ?? false; // Retorna el idUsuario o false si no existe
+    }
+
 }

@@ -213,7 +213,24 @@ form button{
     display: flex;
 }
 
+.anadir{
+    margin-top: 10;
+    background-color: #00008b;  
+    color: white;
+    justify-content: space-evenly;
+    border-radius: .50rem;
+    align-items: center;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center justify;
+    width: fit-content;
+    height: 1.5rem;
+}
+
 .tabla-pedido{
-    width: 80vh;
-    background-color: #00008b;
+    margin-left: 100px;
+    width: 80%;
+    justify-items: center;
+    height: 1.6rem;
+    background-color: white;
 }

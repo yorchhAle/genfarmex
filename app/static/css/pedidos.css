@@ -1,0 +1,81 @@
+
+.pedidos-container {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 80%;
+}
+
+.pedidos-container h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sin-pedidos, .error {
+    color: red;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.pedido {
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.pedido-id {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.cliente, .fecha-pedido, .estado, .descuento {
+    margin: 5px 0;
+}
+
+.pedidos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.pedidos th, .pedidos td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.pedidos th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.pedidos tr {
+    background-color: #f9f9f9;
+}
+
+
+
+.detalles-pedido {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.detalles-pedido th, .detalles-pedido td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.detalles-pedido th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.detalles-pedido tr {
+    background-color: #f9f9f9;
+}
+
+
