@@ -1,23 +1,14 @@
-<<<<<<< HEAD
 <?php
-=======
-<?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
-<?php 
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
 session_start();
 if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
     header("Location: inicioSesion.html");
     exit;
 }
-<<<<<<< HEAD
 ?>
 <?php include '../includes/header.php'; ?> <!-- Incluir el encabezado -->
 
 
 
-=======
-?> 
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,11 +21,6 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 
 <body>
     <?php include '../includes/menu.php'; ?> <!-- Incluir el menú -->
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
     <div class="container">
         <div class="logo">
             <img src="../static/img/letrasAzules.png" alt="Genfarmex" class="logo-img">
@@ -57,8 +43,4 @@ if (!isset($_SESSION['tipoUsuario']) || $_SESSION['tipoUsuario'] !== 'admin') {
 </body>
 
 </html>
-<<<<<<< HEAD
 <?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->
-=======
-<?php include '../includes/footer.php'; ?> <!-- Incluir el pie de página -->
->>>>>>> 4034973f32a9fa5bd37da43a6f0b996761c6ac3a
